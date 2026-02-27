@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Highly Visual — Stock Footage Archive</title>
-<link rel="icon" href="favicon.1.ico" type="image/x-icon">
+<link rel="icon" href="/Stock/favicon.1.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -1044,7 +1044,7 @@
         </svg>
         <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type…" autocomplete="off" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:0.6rem 1rem 0.6rem 2.5rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:300;outline:none;">
       </div>
-      <button onclick="executeSearch()" style="background:var(--accent);border:none;border-radius:3px;color:var(--bg);font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.1em;padding:0.6rem 1.2rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">SEARCH</button>
+      <button onclick="window.executeSearch()" style="background:var(--accent);border:none;border-radius:3px;color:var(--bg);font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.1em;padding:0.6rem 1.2rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">SEARCH</button>
     </div>
     <div class="header-actions">
       <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
@@ -1591,4 +1591,38 @@ function escHtml(str) {
 }
 
 // ── KEYBOARD ──
-document.addEventListen
+er('keydown', e => {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+    closeEnquiry();
+    document.getElementById('lightboxPanel').classList.remove('open');
+  }
+});
+
+// ── EXPOSE GLOBALS ──
+window.executeSearch   = function() {
+  state.search = document.getElementById('searchInput').value.toLowerCase().trim();
+  currentPage = 1;
+  applyFilters();
+};
+window.setFilter          = setFilter;
+window.clearAllFilters    = clearAllFilters;
+window.applyFilters       = applyFilters;
+window.toggleLightbox     = toggleLightbox;
+window.toggleLightboxItem = toggleLightboxItem;
+window.openClip           = openClip;
+window.closeVideoModal    = closeVideoModal;
+window.closeModal         = closeModal;
+window.openEnquiry        = openEnquiry;
+window.closeEnquiry       = closeEnquiry;
+window.submitEnquiry      = submitEnquiry;
+window.searchTag          = searchTag;
+window.goPage             = goPage;
+window.clearLightbox      = clearLightbox;
+window.getClip            = getClip;
+
+// ── INIT ──
+loadData();
+</script>
+</body>
+</html>
