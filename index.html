@@ -1591,7 +1591,7 @@ function escHtml(str) {
 }
 
 // ── KEYBOARD ──
-er('keydown', e => {
+document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeVideoModal();
     closeEnquiry();
@@ -1599,8 +1599,8 @@ er('keydown', e => {
   }
 });
 
-// ── EXPOSE GLOBALS ──
-window.executeSearch   = function() {
+// ── EXPOSE ALL FUNCTIONS GLOBALLY ──
+window.executeSearch      = function() {
   state.search = document.getElementById('searchInput').value.toLowerCase().trim();
   currentPage = 1;
   applyFilters();
