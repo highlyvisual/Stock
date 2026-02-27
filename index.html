@@ -1214,7 +1214,8 @@ const state = {
 // ── LOAD DATA ──
 async function loadData() {
   try {
-    const resp = await fetch('footage.json');
+    const base = window.location.pathname.replace(/\/[^\/]*$/, '') + '/';
+    const resp = await fetch(base + 'footage.json');
     if (!resp.ok) throw new Error('Failed to load footage.json');
     allFootage = await resp.json();
     init();
