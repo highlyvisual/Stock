@@ -1037,11 +1037,14 @@
     <a href="https://www.highlyvisual.com" class="logo" target="_blank">
       <img src="highly visual white.png" alt="Highly Visual" style="height:110px;width:auto;filter:brightness(0) invert(1);">
     </a>
-    <div class="header-search">
-      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
-      <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type…" autocomplete="off">
+    <div class="header-search" style="display:flex;gap:0.5rem;align-items:center;">
+      <div style="position:relative;flex:1;">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type…" autocomplete="off" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:0.6rem 1rem 0.6rem 2.5rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:300;outline:none;">
+      </div>
+      <button onclick="executeSearch()" style="background:var(--accent);border:none;border-radius:3px;color:var(--bg);font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.1em;padding:0.6rem 1.2rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">SEARCH</button>
     </div>
     <div class="header-actions">
       <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
@@ -1213,27 +1216,64 @@ const state = {
 
 // ── LOAD DATA ──
 async function loadData() {
-  try {
-    const base = window.location.pathname.replace(/\/[^\/]*$/, '') + '/';
-    const resp = await fetch(base + 'footage.json');
-    if (!resp.ok) throw new Error('Failed to load footage.json');
-    allFootage = await resp.json();
-    init();
-  } catch(e) {
-    document.getElementById('clipsContainer').innerHTML =
-      '<div class="loading">Could not load footage.json — make sure the file is in the same folder as index.html</div>';
+  const clipsEl = document.getElementById('clipsContainer');
+  
+  // Try multiple path strategies to handle GitHub Pages subdirectory
+  const urls = [
+    'footage.json',
+    './footage.json',
+    '/Stock/footage.json',
+    window.location.origin + '/Stock/footage.json',
+  ];
+
+  for (const url of urls) {
+    try {
+      const resp = await fetch(url);
+      if (!resp.ok) continue;
+      const data = await resp.json();
+      if (data && data.length > 0) {
+        allFootage = data;
+        init();
+        return;
+      }
+    } catch(e) {
+      continue;
+    }
   }
+
+  clipsEl.innerHTML = '<div class="loading">Could not load footage.json — ' +
+    '<a href="footage.json" style="color:var(--accent)">click here to test</a></div>';
 }
 
 function init() {
   buildLocationFilters();
   document.getElementById('heroMeta').textContent =
-    `${allFootage.length.toLocaleString()} clips · Kenya & East Africa · 4K & higher`;
-  document.getElementById('searchInput').addEventListener('input', e => {
+    `${allFootage.length.toLocaleString()} clips · East Africa · 4K & higher`;
+
+  const searchInput = document.getElementById('searchInput');
+  
+  // Search on every keystroke
+  searchInput.addEventListener('input', e => {
     state.search = e.target.value.toLowerCase().trim();
     currentPage = 1;
     applyFilters();
   });
+
+  // Search on Enter key
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      state.search = e.target.value.toLowerCase().trim();
+      currentPage = 1;
+      applyFilters();
+    }
+  });
+
+  applyFilters();
+}
+
+function executeSearch() {
+  state.search = document.getElementById('searchInput').value.toLowerCase().trim();
+  currentPage = 1;
   applyFilters();
 }
 
