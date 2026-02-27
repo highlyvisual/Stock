@@ -1,1 +1,1553 @@
-<h1>Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highly Visual — Stock Footage Archive</title>
+<link rel="icon" href="favicon.1.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a0a;
+    --surface:   #111111;
+    --surface2:  #1a1a1a;
+    --border:    #222222;
+    --accent:    #c8a96e;
+    --accent2:   #e8c98e;
+    --text:      #e8e4dc;
+    --text-dim:  #888880;
+    --text-faint:#444440;
+    --danger:    #c06040;
+    --tag-bg:    #1e1e18;
+    --tag-border:#2e2e22;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 64px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo img {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .logo-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .header-search {
+    flex: 1;
+    position: relative;
+  }
+
+  .header-search input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .header-search input:focus { border-color: var(--accent); }
+  .header-search input::placeholder { color: var(--text-faint); }
+
+  .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-faint);
+    pointer-events: none;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .lightbox-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .lightbox-btn:hover, .lightbox-btn.has-items {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .lightbox-count {
+    background: var(--accent);
+    color: var(--bg);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2.5rem;
+    background: linear-gradient(180deg, #0f0f0a 0%, var(--bg) 100%);
+  }
+
+  .hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  /* ── FILTERS ── */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    margin-right: 0.25rem;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-chip {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+
+  .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-chip.active { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 500; }
+
+  .filter-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 0.25rem;
+  }
+
+  .sort-select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    outline: none;
+    text-transform: uppercase;
+  }
+
+  /* ── RESULTS BAR ── */
+  .results-bar {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .results-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .results-count span { color: var(--accent); }
+
+  .clear-filters {
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .clear-filters:hover { color: var(--danger); }
+
+  /* ── CLIP LIST ── */
+  .clips-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .clip-row {
+    display: grid;
+    grid-template-columns: 240px 1fr auto;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .clip-row:hover { background: var(--surface); }
+
+  .clip-row:hover .clip-play-overlay { opacity: 1; }
+
+  .clip-thumb {
+    position: relative;
+    width: 240px;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--surface2);
+  }
+
+  .clip-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .clip-row:hover .clip-thumb img { transform: scale(1.04); }
+
+  .clip-play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .play-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .play-icon svg { margin-left: 3px; }
+
+  .thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface2);
+  }
+
+  .thumb-placeholder svg { opacity: 0.2; }
+
+  .clip-duration {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background: rgba(0,0,0,0.75);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .clip-info {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+  }
+
+  .clip-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+
+  .clip-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .clip-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .meta-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .meta-pill.category { border-color: var(--accent); color: var(--accent); }
+  .meta-pill.location { border-color: #3a4a3a; color: #8ab08a; }
+  .meta-pill.camera   { border-color: #3a3a4a; color: #8a8ab0; }
+  .meta-pill.fps      { border-color: #4a3a3a; color: #b08a8a; }
+
+  .clip-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    padding: 0.15rem 0.4rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  .clip-actions {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .add-to-lightbox {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .add-to-lightbox:hover { border-color: var(--accent); color: var(--accent); }
+  .add-to-lightbox.added { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+  .vimeo-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    padding: 0.4rem 0;
+  }
+
+  .vimeo-link:hover { color: var(--accent); }
+
+  /* ── VIDEO MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.25s;
+  }
+
+  .modal-overlay.active .modal { transform: translateY(0); }
+
+  .modal-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+  }
+
+  .modal-video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .modal-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+  }
+
+  .modal-close:hover { background: var(--surface2); }
+
+  .modal-overlay { position: fixed; }
+  .modal { position: relative; }
+
+  /* ── LIGHTBOX PANEL ── */
+  .lightbox-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 380px;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .lightbox-panel.open { transform: translateX(0); }
+
+  .lightbox-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .lightbox-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  .close-panel {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0.25rem;
+    transition: color 0.2s;
+  }
+
+  .close-panel:hover { color: var(--text); }
+
+  .lightbox-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .lightbox-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.75rem;
+    background: var(--surface2);
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+
+  .lightbox-item-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .lightbox-item-info { flex: 1; min-width: 0; }
+
+  .lightbox-item-title {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .lightbox-item-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+  }
+
+  .remove-item {
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .remove-item:hover { color: var(--danger); }
+
+  .lightbox-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .lightbox-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .enquiry-btn {
+    width: 100%;
+    background: var(--accent);
+    border: none;
+    border-radius: 3px;
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    padding: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .enquiry-btn:hover { background: var(--accent2); }
+  .enquiry-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .clear-lightbox {
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    padding: 0.25rem;
+  }
+
+  .clear-lightbox:hover { color: var(--danger); }
+
+  /* ── ENQUIRY MODAL ── */
+  .enquiry-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .enquiry-modal.active { opacity: 1; pointer-events: all; }
+
+  .enquiry-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 560px;
+    padding: 2rem;
+  }
+
+  .enquiry-form h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .enquiry-form p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.6rem 0.8rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .selected-clips-preview {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  .selected-clips-preview p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+  }
+
+  .btn-cancel {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-cancel:hover { border-color: var(--text-dim); color: var(--text); }
+
+  .btn-submit {
+    background: var(--accent);
+    border: none;
+    border-radius: 2px;
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-submit:hover { background: var(--accent2); }
+
+  /* ── LOADING / EMPTY ── */
+  .loading {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .no-results {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-faint);
+  }
+
+  .no-results h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .no-results p {
+    font-size: 0.85rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── PAGINATION ── */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+  }
+
+  .page-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 36px;
+    text-align: center;
+  }
+
+  .page-btn:hover, .page-btn.active { border-color: var(--accent); color: var(--accent); }
+  .page-btn.active { background: var(--accent); color: var(--bg); }
+  .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .clip-row { grid-template-columns: 160px 1fr; }
+    .clip-actions { display: none; }
+    .lightbox-panel { width: 100%; }
+    .header-inner { gap: 1rem; }
+    .logo-text { font-size: 1.1rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .clip-row {
+    animation: fadeIn 0.3s ease both;
+  }
+
+  .success-msg {
+    text-align: center;
+    padding: 2rem;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="https://www.highlyvisual.com" class="logo" target="_blank">
+      <img src="highly visual white.png" alt="Highly Visual" style="height:38px;width:auto;filter:brightness(0) invert(1);">
+    </a>
+    <div class="header-search">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type…" autocomplete="off">
+    </div>
+    <div class="header-actions">
+      <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+        </svg>
+        LIGHTBOX
+        <span class="lightbox-count" id="lightboxCount" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO / FILTERS -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>STOCK <span>FOOTAGE</span> ARCHIVE</h1>
+    <div class="hero-meta" id="heroMeta">Loading archive…</div>
+    <div class="filters">
+      <span class="filter-label">Category</span>
+      <div class="filter-group" id="categoryFilters">
+        <button class="filter-chip active" data-filter="category" data-value="all" onclick="setFilter('category','all',this)">All</button>
+        <button class="filter-chip" data-filter="category" data-value="Wildlife" onclick="setFilter('category','Wildlife',this)">Wildlife</button>
+        <button class="filter-chip" data-filter="category" data-value="Aerial / Drone" onclick="setFilter('category','Aerial / Drone',this)">Aerial</button>
+        <button class="filter-chip" data-filter="category" data-value="Landscape / Scenic" onclick="setFilter('category','Landscape / Scenic',this)">Landscape</button>
+      </div>
+      <div class="filter-divider"></div>
+      <span class="filter-label">Location</span>
+      <div class="filter-group" id="locationFilters"></div>
+      <div class="filter-divider"></div>
+      <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+        <option value="default">Sort: Default</option>
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="az">Title A–Z</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS BAR -->
+<div class="results-bar">
+  <div class="results-count"><span id="resultCount">—</span> CLIPS</div>
+  <button class="clear-filters" onclick="clearAllFilters()">Clear Filters</button>
+</div>
+
+<!-- CLIP LIST -->
+<div class="clips-container" id="clipsContainer">
+  <div class="loading">Loading archive…</div>
+</div>
+
+<!-- PAGINATION -->
+<div class="pagination" id="pagination"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">HIGHLY VISUAL</div>
+    <div class="footer-links">
+      <a href="https://www.highlyvisual.com" target="_blank">Main Site</a>
+      <a href="https://www.highlyvisual.com/contact-9" target="_blank">Contact</a>
+      <a href="https://www.instagram.com/highlyvisualke/" target="_blank">Instagram</a>
+      <a href="https://wa.me/254701397911" target="_blank">WhatsApp</a>
+    </div>
+    <div class="footer-copy">© 2025 Highly Visual · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6900070f062901000e0105101f001a1c0805470a0604">[email&#160;protected]</a> · All footage 4K or higher · Licensed drone operator</div>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeVideoModal()">✕</button>
+    <div class="modal-video" id="modalVideo"></div>
+    <div class="modal-body">
+      <div class="clip-meta-row" id="modalMeta"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-footer">
+        <div class="clip-tags" id="modalTags"></div>
+        <button class="add-to-lightbox" id="modalLightboxBtn" onclick="toggleLightboxItem(currentClip)">+ Add to Lightbox</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX PANEL -->
+<div class="lightbox-panel" id="lightboxPanel">
+  <div class="lightbox-header">
+    <h2>LIGHTBOX</h2>
+    <button class="close-panel" onclick="toggleLightbox()">✕</button>
+  </div>
+  <div class="lightbox-items" id="lightboxItems">
+    <div class="lightbox-empty">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+      </svg>
+      <p>Add clips to your lightbox to send an enquiry</p>
+    </div>
+  </div>
+  <div class="lightbox-footer">
+    <button class="enquiry-btn" id="enquiryBtn" onclick="openEnquiry()" disabled>SEND ENQUIRY</button>
+    <button class="clear-lightbox" onclick="clearLightbox()">Clear Lightbox</button>
+  </div>
+</div>
+
+<!-- ENQUIRY MODAL -->
+<div class="enquiry-modal" id="enquiryModal">
+  <div class="enquiry-form">
+    <h2>LICENCE ENQUIRY</h2>
+    <p>Tell us about your project and we'll get back to you with availability and pricing.</p>
+    <div id="enquiryClipList" class="selected-clips-preview"></div>
+    <form id="enquiryFormEl" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="submitEnquiry(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" name="first_name" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" name="last_name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label>Company / Production</label>
+        <input type="text" name="company">
+      </div>
+      <div class="form-group">
+        <label>Intended Use</label>
+        <input type="text" name="intended_use" placeholder="e.g. BBC documentary, commercial, social media">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" placeholder="Any additional details about your project or requirements…"></textarea>
+      </div>
+      <input type="hidden" name="selected_clips" id="selectedClipsInput">
+      <input type="hidden" name="_subject" value="New Footage Lightbox Enquiry — Highly Visual">
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" onclick="closeEnquiry()">Cancel</button>
+        <button type="submit" class="btn-submit">SEND ENQUIRY</button>
+      </div>
+    </form>
+    <div id="enquirySuccess" style="display:none" class="success-msg">
+      <p>✓ Enquiry sent — we'll be in touch shortly.</p>
+      <br>
+      <button class="btn-cancel" onclick="closeEnquiry()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── STATE ──
+let allFootage   = [];
+let filtered     = [];
+let lightbox     = [];
+let currentPage  = 1;
+let currentClip  = null;
+const PER_PAGE   = 30;
+
+const state = {
+  search:   '',
+  category: 'all',
+  location: 'all',
+  sort:     'default',
+};
+
+// ── LOAD DATA ──
+async function loadData() {
+  try {
+    const resp = await fetch('footage.json');
+    if (!resp.ok) throw new Error('Failed to load footage.json');
+    allFootage = await resp.json();
+    init();
+  } catch(e) {
+    document.getElementById('clipsContainer').innerHTML =
+      '<div class="loading">Could not load footage.json — make sure the file is in the same folder as index.html</div>';
+  }
+}
+
+function init() {
+  buildLocationFilters();
+  document.getElementById('heroMeta').textContent =
+    `${allFootage.length.toLocaleString()} clips · Kenya & East Africa · 4K & higher`;
+  document.getElementById('searchInput').addEventListener('input', e => {
+    state.search = e.target.value.toLowerCase().trim();
+    currentPage = 1;
+    applyFilters();
+  });
+  applyFilters();
+}
+
+// ── LOCATION FILTERS ──
+function buildLocationFilters() {
+  const locations = [...new Set(allFootage.map(f => f.location).filter(l => l && l !== 'Unknown'))].sort();
+  const container = document.getElementById('locationFilters');
+  container.innerHTML = `<button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>`;
+  locations.forEach(loc => {
+    const short = loc.replace(' National Park','').replace(' National Reserve','').replace(' Conservancy','').replace(' Elephant Sanctuary','');
+    container.innerHTML += `<button class="filter-chip" data-filter="location" data-value="${loc}" onclick="setFilter('location','${loc}',this)" title="${loc}">${short}</button>`;
+  });
+}
+
+// ── FILTERS ──
+function setFilter(type, value, el) {
+  state[type] = value;
+  document.querySelectorAll(`[data-filter="${type}"]`).forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  currentPage = 1;
+  applyFilters();
+}
+
+function applyFilters() {
+  state.sort = document.getElementById('sortSelect').value;
+
+  filtered = allFootage.filter(clip => {
+    if (state.category !== 'all' && clip.category !== state.category) return false;
+    if (state.location !== 'all' && clip.location !== state.location) return false;
+    if (state.search) {
+      const haystack = [clip.title, clip.description, clip.location,
+        clip.camera, clip.filename, ...(clip.tags || [])].join(' ').toLowerCase();
+      const terms = state.search.split(/\s+/);
+      if (!terms.every(t => haystack.includes(t))) return false;
+    }
+    return true;
+  });
+
+  // Sort
+  if (state.sort === 'newest') {
+    filtered.sort((a,b) => b.id - a.id);
+  } else if (state.sort === 'oldest') {
+    filtered.sort((a,b) => a.id - b.id);
+  } else if (state.sort === 'az') {
+    filtered.sort((a,b) => a.title.localeCompare(b.title));
+  }
+
+  document.getElementById('resultCount').textContent = filtered.length.toLocaleString();
+  renderPage();
+  renderPagination();
+}
+
+function clearAllFilters() {
+  state.search = '';
+  state.category = 'all';
+  state.location = 'all';
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.filter-chip').forEach(b => {
+    b.classList.toggle('active', b.dataset.value === 'all');
+  });
+  document.getElementById('sortSelect').value = 'default';
+  currentPage = 1;
+  applyFilters();
+}
+
+// ── RENDER ──
+function renderPage() {
+  const container = document.getElementById('clipsContainer');
+  const start = (currentPage - 1) * PER_PAGE;
+  const page  = filtered.slice(start, start + PER_PAGE);
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="no-results">
+        <h3>No clips found</h3>
+        <p>Try different search terms or clear your filters</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = page.map((clip, i) => renderClipRow(clip, i)).join('');
+}
+
+function renderClipRow(clip, i) {
+  const inLightbox = lightbox.some(l => l.id === clip.id);
+  const thumbHtml = clip.thumbnail
+    ? `<img src="${clip.thumbnail}" alt="${escHtml(clip.title)}" loading="lazy">`
+    : `<div class="thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></div>`;
+
+  const topTags = (clip.tags || []).slice(0, 8);
+
+  return `
+    <div class="clip-row" style="animation-delay:${i * 0.03}s" onclick="openClip(${clip.id})">
+      <div class="clip-thumb">
+        ${thumbHtml}
+        <div class="clip-play-overlay">
+          <div class="play-icon">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
+          </div>
+        </div>
+        ${clip.duration ? `<div class="clip-duration">${clip.duration}</div>` : ''}
+      </div>
+      <div class="clip-info">
+        <div>
+          <div class="clip-title">${escHtml(clip.title)}</div>
+          <div class="clip-desc">${escHtml(clip.description)}</div>
+        </div>
+        <div>
+          <div class="clip-meta-row">
+            <span class="meta-pill category">${escHtml(clip.category)}</span>
+            ${clip.location !== 'Unknown' ? `<span class="meta-pill location">${escHtml(clip.location)}</span>` : ''}
+            <span class="meta-pill camera">${escHtml(clip.camera)}</span>
+            ${clip.fps ? `<span class="meta-pill fps">${clip.fps}fps</span>` : ''}
+          </div>
+          <div class="clip-tags">
+            ${topTags.map(t => `<span class="tag" onclick="event.stopPropagation();searchTag('${escHtml(t)}')">${escHtml(t)}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="clip-actions" onclick="event.stopPropagation()">
+        <button class="add-to-lightbox ${inLightbox ? 'added' : ''}"
+          onclick="toggleLightboxItem(getClip(${clip.id}))">
+          ${inLightbox ? '✓ Added' : '+ Lightbox'}
+        </button>
+        ${clip.vimeo_id ? `<a class="vimeo-link" href="https://vimeo.com/${clip.vimeo_id}" target="_blank" onclick="event.stopPropagation()">View on Vimeo →</a>` : ''}
+      </div>
+    </div>`;
+}
+
+// ── PAGINATION ──
+function renderPagination() {
+  const total = Math.ceil(filtered.length / PER_PAGE);
+  const el = document.getElementById('pagination');
+  if (total <= 1) { el.innerHTML = ''; return; }
+
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>←</button>`;
+  for (let p = Math.max(1, currentPage-2); p <= Math.min(total, currentPage+2); p++) {
+    html += `<button class="page-btn ${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
+  }
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>→</button>`;
+  html += `<span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-faint);letter-spacing:0.1em;margin-left:0.5rem">PAGE ${currentPage} / ${total}</span>`;
+  el.innerHTML = html;
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderPage();
+  renderPagination();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── CLIP MODAL ──
+function getClip(id) { return allFootage.find(c => c.id === id); }
+
+function openClip(id) {
+  const clip = getClip(id);
+  if (!clip) return;
+  currentClip = clip;
+
+  document.getElementById('modalTitle').textContent = clip.title;
+  document.getElementById('modalDesc').textContent  = clip.description;
+
+  document.getElementById('modalMeta').innerHTML = `
+    <span class="meta-pill category">${escHtml(clip.category)}</span>
+    ${clip.location !== 'Unknown' ? `<span class="meta-pill location">${escHtml(clip.location)}</span>` : ''}
+    <span class="meta-pill camera">${escHtml(clip.camera)}</span>
+    ${clip.fps ? `<span class="meta-pill fps">${clip.fps}fps</span>` : ''}
+    ${clip.duration ? `<span class="meta-pill">${clip.duration}</span>` : ''}`;
+
+  document.getElementById('modalTags').innerHTML =
+    (clip.tags || []).map(t => `<span class="tag" onclick="searchTag('${escHtml(t)}');closeVideoModal()">${escHtml(t)}</span>`).join('');
+
+  const videoEl = document.getElementById('modalVideo');
+  if (clip.vimeo_id) {
+    videoEl.innerHTML = `<iframe src="https://player.vimeo.com/video/${clip.vimeo_id}?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  } else {
+    videoEl.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-faint);font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;">VIMEO ID NOT YET LINKED</div>`;
+  }
+
+  const btn = document.getElementById('modalLightboxBtn');
+  const inLightbox = lightbox.some(l => l.id === clip.id);
+  btn.textContent = inLightbox ? '✓ In Lightbox' : '+ Add to Lightbox';
+  btn.className = 'add-to-lightbox' + (inLightbox ? ' added' : '');
+
+  document.getElementById('videoModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('videoModal')) closeVideoModal();
+}
+
+function closeVideoModal() {
+  document.getElementById('videoModal').classList.remove('active');
+  document.getElementById('modalVideo').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+// ── LIGHTBOX ──
+function toggleLightbox() {
+  document.getElementById('lightboxPanel').classList.toggle('open');
+}
+
+function toggleLightboxItem(clip) {
+  if (!clip) return;
+  const idx = lightbox.findIndex(l => l.id === clip.id);
+  if (idx > -1) {
+    lightbox.splice(idx, 1);
+  } else {
+    lightbox.push(clip);
+  }
+  updateLightboxUI();
+  renderPage();
+  if (currentClip && currentClip.id === clip.id) {
+    const btn = document.getElementById('modalLightboxBtn');
+    const inLightbox = lightbox.some(l => l.id === clip.id);
+    btn.textContent = inLightbox ? '✓ In Lightbox' : '+ Add to Lightbox';
+    btn.className = 'add-to-lightbox' + (inLightbox ? ' added' : '');
+  }
+}
+
+function updateLightboxUI() {
+  const count = lightbox.length;
+  const countEl = document.getElementById('lightboxCount');
+  const btn = document.getElementById('lightboxToggle');
+  countEl.textContent = count;
+  countEl.style.display = count > 0 ? 'flex' : 'none';
+  btn.classList.toggle('has-items', count > 0);
+  document.getElementById('enquiryBtn').disabled = count === 0;
+
+  const itemsEl = document.getElementById('lightboxItems');
+  if (count === 0) {
+    itemsEl.innerHTML = `
+      <div class="lightbox-empty">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+        </svg>
+        <p>Add clips to your lightbox to send an enquiry</p>
+      </div>`;
+  } else {
+    itemsEl.innerHTML = lightbox.map((clip, i) => `
+      <div class="lightbox-item">
+        <div class="lightbox-item-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="lightbox-item-info">
+          <div class="lightbox-item-title">${escHtml(clip.title)}</div>
+          <div class="lightbox-item-meta">${escHtml(clip.location)} · ${escHtml(clip.category)}${clip.duration ? ' · ' + clip.duration : ''}</div>
+        </div>
+        <button class="remove-item" onclick="toggleLightboxItem(getClip(${clip.id}))" title="Remove">✕</button>
+      </div>`).join('');
+  }
+}
+
+function clearLightbox() {
+  lightbox = [];
+  updateLightboxUI();
+  renderPage();
+}
+
+// ── ENQUIRY ──
+function openEnquiry() {
+  const clipsText = lightbox.map((c,i) => `${i+1}. ${c.title} (${c.filename}${c.vimeo_id ? ' · vimeo.com/'+c.vimeo_id : ''})`).join('\n');
+  document.getElementById('enquiryClipList').innerHTML =
+    lightbox.map(c => `<p>${escHtml(c.title)}</p>`).join('');
+  document.getElementById('selectedClipsInput').value = clipsText;
+  document.getElementById('enquiryModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEnquiry() {
+  document.getElementById('enquiryModal').classList.remove('active');
+  document.getElementById('enquirySuccess').style.display = 'none';
+  document.getElementById('enquiryFormEl').style.display = '';
+  document.body.style.overflow = '';
+}
+
+function submitEnquiry(e) {
+  e.preventDefault();
+  const form = document.getElementById('enquiryFormEl');
+  const data = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(r => {
+    if (r.ok) {
+      form.style.display = 'none';
+      document.getElementById('enquirySuccess').style.display = 'block';
+    } else {
+      alert('There was a problem sending your enquiry. Please email info@highlyvisual.com directly.');
+    }
+  }).catch(() => {
+    alert('There was a problem sending your enquiry. Please email info@highlyvisual.com directly.');
+  });
+}
+
+// ── TAG SEARCH ──
+function searchTag(tag) {
+  document.getElementById('searchInput').value = tag;
+  state.search = tag.toLowerCase();
+  state.category = 'all';
+  state.location = 'all';
+  document.querySelectorAll('.filter-chip').forEach(b => {
+    b.classList.toggle('active', b.dataset.value === 'all');
+  });
+  currentPage = 1;
+  applyFilters();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── UTILS ──
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── KEYBOARD ──
+document.addEventListen
