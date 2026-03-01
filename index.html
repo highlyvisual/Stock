@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     gap: 2rem;
-    height: 120px;
+    height: 170px;
   }
 
   .logo {
@@ -229,6 +229,8 @@
     cursor: pointer;
     transition: all 0.15s;
     text-transform: uppercase;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
@@ -1002,11 +1004,124 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .clip-row { grid-template-columns: 160px 1fr; }
+
+    /* Header */
+    .header-inner {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 0.75rem 0;
+      gap: 0.75rem;
+    }
+    .logo img { height: 60px; }
+    .header-search { order: 3; width: 100%; }
+    .header-search > div { width: 100%; }
+    .header-actions { margin-left: auto; }
+
+    /* Hero */
+    .hero { padding: 1.5rem 1rem 1.25rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero-meta { font-size: 0.65rem; margin-bottom: 1.25rem; }
+
+    /* Filters — category chips wrap, location scrolls horizontally */
+    .filters {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .filter-divider { display: none; }
+    .filter-label { margin-bottom: 0; }
+
+    /* Category chips wrap normally */
+    #categoryFilters { flex-wrap: wrap; }
+
+    /* Location chips scroll horizontally */
+    #locationFilters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+      max-width: calc(100vw - 2rem);
+    }
+    #locationFilters::-webkit-scrollbar { display: none; }
+    #locationFilters .filter-chip { flex-shrink: 0; }
+
+    /* Results bar */
+    .results-bar { padding: 0.75rem 1rem; }
+
+    /* Clip list container */
+    .clips-container { padding: 0 0 3rem; }
+
+    /* Stacked clip rows */
+    .clip-row {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .clip-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+
+    .clip-info {
+      padding: 0.875rem 1rem;
+      gap: 0.5rem;
+    }
+
+    .clip-title { font-size: 0.9rem; }
+    .clip-desc { -webkit-line-clamp: 3; font-size: 0.78rem; }
+
+    .clip-meta-row { gap: 0.35rem; }
+    .meta-pill { font-size: 0.55rem; padding: 0.15rem 0.4rem; }
+
+    /* Hide actions column on mobile — lightbox accessible via modal */
     .clip-actions { display: none; }
+
+    /* Modal */
+    .modal-overlay { padding: 0; align-items: flex-end; }
+    .modal {
+      border-radius: 8px 8px 0 0;
+      max-height: 92vh;
+    }
+    .modal-body { padding: 1rem; }
+    .modal-footer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .add-to-lightbox {
+      width: 100%;
+      text-align: center;
+      padding: 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    /* Lightbox panel full width on mobile */
     .lightbox-panel { width: 100%; }
-    .header-inner { gap: 1rem; }
-    .logo-text { font-size: 1.1rem; }
+
+    /* Enquiry modal */
+    .enquiry-modal { padding: 0; align-items: flex-end; }
+    .enquiry-form {
+      border-radius: 8px 8px 0 0;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 1.5rem 1rem;
+    }
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Pagination */
+    .pagination { padding: 1.5rem 1rem; gap: 0.35rem; }
+    .page-btn { padding: 0.4rem 0.6rem; min-width: 32px; font-size: 0.65rem; }
+
+    /* Footer */
+    footer { padding: 1.5rem 1rem; }
+    .footer-links { gap: 1rem; }
+  }
+
+  /* Small phones */
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.6rem; }
+    .clip-title { font-size: 0.85rem; }
   }
 
   /* ── ANIMATIONS ── */
@@ -1035,7 +1150,7 @@
 <header>
   <div class="header-inner">
     <a href="https://www.highlyvisual.com" class="logo" target="_blank">
-      <img src="highly visual white.png" alt="Highly Visual" style="height:110px;width:auto;filter:brightness(0) invert(1);">
+      <img src="highly visual white.png" alt="Highly Visual" style="height:160px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));">
     </a>
     <div class="header-search" style="display:flex;gap:0.5rem;align-items:center;">
       <div style="position:relative;flex:1;">
@@ -1075,7 +1190,7 @@
       <span class="filter-label">Location</span>
       <div class="filter-group" id="locationFilters"></div>
       <div class="filter-divider"></div>
-      <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+      <select class="sort-select" id="sortSelect" onchange="window.applyFilters()">
         <option value="default">Sort: Default</option>
         <option value="newest">Newest First</option>
         <option value="oldest">Oldest First</option>
