@@ -68,7 +68,7 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
     height: 170px;
   }
 
@@ -80,35 +80,6 @@
   }
 
   .logo img { height: 160px; width: auto; filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
-
-  .header-search {
-    flex: 1;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .header-search-inner {
-    position: relative;
-    flex: 1;
-  }
-
-  .header-search input {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 0.55rem 1rem 0.55rem 2.4rem;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .header-search input:focus { border-color: var(--accent); }
-  .header-search input::placeholder { color: var(--text-faint); }
 
   .search-icon {
     position: absolute;
@@ -313,7 +284,7 @@
     border-color: var(--accent);
   }
 
-  /* ── FILTER BAR (sticky below header) ── */
+  /* ── FILTER BAR (sticky) ── */
   .filter-bar {
     position: sticky;
     top: 170px;
@@ -328,8 +299,69 @@
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
+    flex-direction: column;
+  }
+
+  /* Search row */
+  .fb-search-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0 0.65rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-search-inner {
+    position: relative;
+    flex: 1;
+  }
+
+  .header-search-inner input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.5rem 1rem 0.5rem 2.4rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .header-search-inner input:focus { border-color: var(--accent); }
+  .header-search-inner input::placeholder { color: var(--text-faint); }
+
+  .search-icon {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-faint);
+    pointer-events: none;
+  }
+
+  .search-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: 3px;
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .search-btn:hover { background: var(--accent2); }
+
+  /* Filter row */
+  .fb-filter-row {
+    display: flex;
     align-items: stretch;
-    min-height: 46px;
+    min-height: 42px;
     gap: 0;
   }
 
@@ -337,29 +369,38 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 8px 0;
+    padding: 7px 0;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .fb-section--noshrink {
+    flex: 0 0 auto;
+  }
+
+  .fb-divider {
+    width: 1px;
+    background: var(--border);
+    margin: 8px 0.85rem;
+    flex-shrink: 0;
   }
 
   .fb-label {
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--text-faint);
     white-space: nowrap;
     flex-shrink: 0;
-    padding-right: 0.5rem;
-    border-right: 1px solid var(--border);
-    margin-right: 0.5rem;
   }
 
   .fb-pills {
     display: flex;
-    gap: 0.35rem;
+    gap: 0.3rem;
     overflow-x: auto;
     scrollbar-width: none;
     padding: 2px 0;
-    flex: 1;
     align-items: center;
   }
   .fb-pills::-webkit-scrollbar { display: none; }
@@ -372,7 +413,7 @@
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
     letter-spacing: 0.08em;
-    padding: 0.3rem 0.65rem;
+    padding: 0.28rem 0.6rem;
     cursor: pointer;
     transition: all 0.15s;
     text-transform: uppercase;
@@ -383,16 +424,6 @@
   }
   .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
   .filter-chip.active { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 500; }
-
-  .fb-right {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-    margin-left: auto;
-    padding-left: 1rem;
-    border-left: 1px solid var(--border);
-  }
 
   .sort-select {
     background: transparent;
@@ -422,40 +453,6 @@
   }
   .view-btn.active { border-color: var(--accent); color: var(--accent); }
   .view-btn:hover { border-color: var(--text-dim); color: var(--text-dim); }
-
-  /* ── SUBJECT TABS ── */
-  .subject-tabs {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-  }
-
-  .subject-tabs-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .subject-tabs-inner::-webkit-scrollbar { display: none; }
-
-  .stab {
-    padding: 10px 14px;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    font-family: 'DM Mono', monospace;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: all 0.15s;
-    background: none;
-    border-top: none; border-left: none; border-right: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .stab:hover { color: var(--text-dim); }
-  .stab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
   /* ── RESULTS BAR ── */
   .results-bar {
@@ -1038,9 +1035,8 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .header-inner { flex-wrap: wrap; height: auto; padding: 0.75rem 0; gap: 0.75rem; }
+    .header-inner { height: auto; padding: 0.75rem 0; }
     .logo img { height: 60px; }
-    .header-search { order: 3; width: 100%; }
     .header-actions { margin-left: auto; }
 
     .hero-text { padding: 1.25rem 1rem 1rem; }
@@ -1050,7 +1046,6 @@
     .showreels { grid-template-columns: 1fr 1fr; }
 
     .filter-bar { display: none; }
-    .subject-tabs { display: none; }
     .fab { display: flex; }
 
     .results-bar { padding: 0.6rem 1rem; }
@@ -1108,15 +1103,6 @@
     <div class="logo">
       <img src="highly visual white.png" alt="Highly Visual">
     </div>
-    <div class="header-search">
-      <div class="header-search-inner">
-        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type…" autocomplete="off">
-      </div>
-      <button class="search-btn" onclick="executeSearch()">SEARCH</button>
-    </div>
     <div class="header-actions">
       <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1173,22 +1159,19 @@
   </div>
 </div>
 
-<!-- STICKY FILTER BAR (desktop) -->
+<!-- FILTER PANEL (desktop) -->
 <div class="filter-bar">
   <div class="filter-bar-inner">
-    <div class="fb-section" style="flex:1;min-width:0;">
-      <span class="fb-label">Location</span>
-      <div class="fb-pills" id="locationFilters">
-        <button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>
+
+    <!-- Search row -->
+    <div class="fb-search-row">
+      <div class="header-search-inner">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type…" autocomplete="off">
       </div>
-    </div>
-    <div class="fb-right">
-      <select class="sort-select" id="sortSelect" onchange="applyFilters()">
-        <option value="default">Sort: Default</option>
-        <option value="newest">Newest First</option>
-        <option value="oldest">Oldest First</option>
-        <option value="az">Title A–Z</option>
-      </select>
+      <button class="search-btn" onclick="executeSearch()">SEARCH</button>
       <div class="view-toggle">
         <button class="view-btn" id="viewList" onclick="setView('list')" title="List view">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -1198,18 +1181,39 @@
         </button>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- SUBJECT TABS (desktop) -->
-<div class="subject-tabs">
-  <div class="subject-tabs-inner" id="subjectTabs">
-    <button class="stab active" data-subject="all" onclick="setSubject('all',this)">All Subjects</button>
-    <button class="stab" data-subject="wildlife" onclick="setSubject('wildlife',this)">Wildlife</button>
-    <button class="stab" data-subject="aerial" onclick="setSubject('aerial',this)">Aerial</button>
-    <button class="stab" data-subject="landscape" onclick="setSubject('landscape',this)">Landscape</button>
-    <button class="stab" data-subject="coast" onclick="setSubject('coast',this)">Coast / Marine</button>
-    <button class="stab" data-subject="people" onclick="setSubject('people',this)">People &amp; Culture</button>
+    <!-- Subject + Location + Sort row -->
+    <div class="fb-filter-row">
+      <div class="fb-section">
+        <span class="fb-label">Subject</span>
+        <div class="fb-pills">
+          <button class="filter-chip active" data-filter="subject" data-value="all" onclick="setSubjectChip('all',this)">All</button>
+          <button class="filter-chip" data-filter="subject" data-value="wildlife" onclick="setSubjectChip('wildlife',this)">Wildlife</button>
+          <button class="filter-chip" data-filter="subject" data-value="aerial" onclick="setSubjectChip('aerial',this)">Aerial</button>
+          <button class="filter-chip" data-filter="subject" data-value="longlens" onclick="setSubjectChip('longlens',this)">Long Lens</button>
+          <button class="filter-chip" data-filter="subject" data-value="landscape" onclick="setSubjectChip('landscape',this)">Landscape</button>
+          <button class="filter-chip" data-filter="subject" data-value="coast" onclick="setSubjectChip('coast',this)">Coast &amp; Marine</button>
+          <button class="filter-chip" data-filter="subject" data-value="nairobi" onclick="setSubjectChip('nairobi',this)">Nairobi</button>
+        </div>
+      </div>
+      <div class="fb-divider"></div>
+      <div class="fb-section">
+        <span class="fb-label">Location</span>
+        <div class="fb-pills" id="locationFilters">
+          <button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>
+        </div>
+      </div>
+      <div class="fb-divider"></div>
+      <div class="fb-section fb-section--noshrink">
+        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+          <option value="default">Sort: Default</option>
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">Title A–Z</option>
+        </select>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1239,7 +1243,7 @@
       <a href="https://www.instagram.com/highlyvisualke/" target="_blank">Instagram</a>
       <a href="https://wa.me/254701397911" target="_blank">WhatsApp</a>
     </div>
-    <div class="footer-copy">© 2026 Highly Visual · info@highlyvisual.com · All footage 4K or higher · Licensed drone operator</div>
+    <div class="footer-copy">© 2026 Highly Visual · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b0b7bfb699b1b0beb1b5a0afb0aaacb8b5f7bab6b4">[email&#160;protected]</a> · All footage 4K or higher · Licensed drone operator</div>
   </div>
 </footer>
 
@@ -1364,12 +1368,13 @@
   <div class="drawer-section">
     <div class="drawer-section-title">Subject</div>
     <div class="drawer-pills" id="drawerSubjectPills">
-      <button class="filter-chip active" data-group="ds" onclick="drawerPill(this,'ds');setSubject('all',document.querySelector('.stab[data-subject=all]'))">All</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubject('wildlife',document.querySelector('.stab[data-subject=wildlife]'))">Wildlife</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubject('aerial',document.querySelector('.stab[data-subject=aerial]'))">Aerial</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubject('landscape',document.querySelector('.stab[data-subject=landscape]'))">Landscape</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubject('coast',document.querySelector('.stab[data-subject=coast]'))">Coast</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubject('people',document.querySelector('.stab[data-subject=people]'))">People</button>
+      <button class="filter-chip active" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('all',document.querySelector('[data-filter=subject][data-value=all]'))">All</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('wildlife',document.querySelector('[data-filter=subject][data-value=wildlife]'))">Wildlife</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('aerial',document.querySelector('[data-filter=subject][data-value=aerial]'))">Aerial</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('longlens',document.querySelector('[data-filter=subject][data-value=longlens]'))">Long Lens</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('landscape',document.querySelector('[data-filter=subject][data-value=landscape]'))">Landscape</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('coast',document.querySelector('[data-filter=subject][data-value=coast]'))">Coast</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('nairobi',document.querySelector('[data-filter=subject][data-value=nairobi]'))">Nairobi</button>
     </div>
   </div>
   <div class="drawer-section">
@@ -1388,7 +1393,7 @@
   <button class="btn-apply" onclick="closeDrawer()">APPLY FILTERS</button>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── STATE ──
 let allFootage  = [];
 let filtered    = [];
@@ -1399,18 +1404,44 @@ const PER_PAGE  = 30;
 
 const state = {
   search:   '',
-  location: 'all',
+  location: 'all',   // group label e.g. 'Tsavo' or 'all'
   subject:  'all',
   sort:     'default',
 };
 
-// Subject keyword map
-const SUBJECT_KEYWORDS = {
-  wildlife:  ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','bird','eagle','vulture','monkey','baboon','hyena','wild dog','caracal','serval','eland','wildebeest','gazelle','impala','oryx','gerenuk','hirola','hartebeest','ostrich','stork','heron','kingfisher','bee-eater'],
-  aerial:    ['aerial','drone','high angle','bird\'s eye','above','overhead','dji','mavic','inspire','phantom'],
-  landscape: ['landscape','savanna','mountain','lake','river','sunset','sunrise','sky','plains','horizon','terrain','forest','bush','vegetation','scenery'],
-  coast:     ['coast','marine','ocean','sea','beach','watamu','mombasa','lamu','coral','turtle','whale','dolphin','fish','mangrove','reef'],
-  people:    ['people','culture','maasai','samburu','community','village','market','traditional','cultural','ceremony','dance','herder','warrior','boma'],
+// Location groups — raw JSON locations → display group
+const LOCATION_GROUPS = {
+  'Tsavo':           ['Tsavo East','Tsavo West','Rukinga Ranch'],
+  'Samburu & North': ['Samburu','Shaba / Samburu Hills','Namunyak / Reteti','Reteti Elephant Sanctuary','Ol Jogi'],
+  'Maasai Mara':     ['Maasai Mara','Maasai Mara / Migration','Shompole'],
+  'Lakes':           ['Lake Bogoria','Lake Naivasha','Lake Magadi'],
+  'Amboseli':        ['Amboseli'],
+  'Coast':           ['Watamu','Mombasa','Lamu / Coast'],
+  'Nairobi':         ['Nairobi','Nairobi National Park','Mount Kenya'],
+};
+
+// Subject filters — precise, camera-aware
+const SUBJECT_FILTERS = {
+  aerial: clip => {
+    const drones = ['Mavic 3 Cine','Mavic 2 Pro','Mavic 3 Pro Cine','Inspire 2 / X5S','Inspire 3','Inspire 1 / X3'];
+    return drones.includes(clip.camera);
+  },
+  longlens: clip => {
+    return ['Sony FX6','Sony FX6 RAW'].includes(clip.camera);
+  },
+  wildlife: clip => {
+    const animals = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','pelican','eagle','vulture','monkey','baboon','hyena','wild dog','caracal','serval','eland','wildebeest','gazelle','impala','oryx','gerenuk','hirola','hartebeest','ostrich','heron','kingfisher','bee-eater','mongoose','sandgrouse'];
+    const h = [...(clip.tags||[])].join(' ').toLowerCase();
+    return animals.some(a => h.includes(a));
+  },
+  landscape: clip => {
+    const animals = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wildebeest','gazelle','impala','oryx','hirola'];
+    const landTags = ['no animals','uninhabited','landscape','scenery','terrain','sunset','sunrise','sky','horizon','mountain','forest','no people'];
+    const h = [...(clip.tags||[])].join(' ').toLowerCase();
+    return landTags.some(t => h.includes(t)) && !animals.some(a => h.includes(a));
+  },
+  coast: clip => ['Watamu','Mombasa','Lamu / Coast'].includes(clip.location),
+  nairobi: clip => ['Nairobi','Nairobi National Park','Mount Kenya'].includes(clip.location),
 };
 
 // ── LOAD DATA ──
@@ -1468,18 +1499,15 @@ function executeSearch() {
 
 // ── LOCATION FILTERS ──
 function buildLocationFilters() {
-  const locations = [...new Set(allFootage.map(f => f.location).filter(l => l && l !== 'Unknown'))].sort();
   const container = document.getElementById('locationFilters');
   const drawerContainer = document.getElementById('drawerLocationPills');
 
-  const allBtn = `<button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>`;
-  container.innerHTML = allBtn;
-  drawerContainer.innerHTML = `<button class="filter-chip active" data-group="dloc" data-filter="location" data-value="all" onclick="drawerPill(this,'dloc');setFilter('location','all',document.querySelector('#locationFilters [data-value=all]'))">All</button>`;
+  container.innerHTML = `<button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>`;
+  drawerContainer.innerHTML = `<button class="filter-chip active" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','all',document.querySelector('#locationFilters [data-value=all]'))">All</button>`;
 
-  locations.forEach(loc => {
-    const short = loc.replace(' National Park','').replace(' National Reserve','').replace(' Conservancy','').replace(' Elephant Sanctuary','');
-    container.innerHTML += `<button class="filter-chip" data-filter="location" data-value="${loc}" onclick="setFilter('location','${loc}',this)" title="${loc}">${short}</button>`;
-    drawerContainer.innerHTML += `<button class="filter-chip" data-group="dloc" data-filter="location" data-value="${loc}" onclick="drawerPill(this,'dloc');setFilter('location','${loc}',document.querySelector('#locationFilters [data-value=\\'${loc}\\']'))">${short}</button>`;
+  Object.keys(LOCATION_GROUPS).forEach(group => {
+    container.innerHTML += `<button class="filter-chip" data-filter="location" data-value="${group}" onclick="setFilter('location','${group}',this)">${group}</button>`;
+    drawerContainer.innerHTML += `<button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','${group}',document.querySelector('#locationFilters [data-value=\\'${group}\\']'))">${group}</button>`;
   });
 }
 
@@ -1500,9 +1528,9 @@ function setView(v) {
 }
 
 // ── SUBJECT FILTER ──
-function setSubject(subj, el) {
+function setSubjectChip(subj, el) {
   state.subject = subj;
-  document.querySelectorAll('.stab').forEach(b => b.classList.toggle('active', b.dataset.subject === subj));
+  document.querySelectorAll('[data-filter="subject"]').forEach(b => b.classList.toggle('active', b.dataset.value === subj));
   currentPage = 1;
   applyFilters();
 }
@@ -1520,14 +1548,19 @@ function applyFilters() {
   state.sort = document.getElementById('sortSelect').value;
 
   filtered = allFootage.filter(clip => {
-    if (state.location !== 'all' && clip.location !== state.location) return false;
-
-    if (state.subject !== 'all') {
-      const keywords = SUBJECT_KEYWORDS[state.subject] || [];
-      const haystack = [clip.title, clip.description, clip.camera, ...(clip.tags || [])].join(' ').toLowerCase();
-      if (!keywords.some(kw => haystack.includes(kw))) return false;
+    // Location group filter
+    if (state.location !== 'all') {
+      const groupLocs = LOCATION_GROUPS[state.location] || [];
+      if (!groupLocs.includes(clip.location)) return false;
     }
 
+    // Subject filter
+    if (state.subject !== 'all') {
+      const fn = SUBJECT_FILTERS[state.subject];
+      if (fn && !fn(clip)) return false;
+    }
+
+    // Text search
     if (state.search) {
       const haystack = [clip.title, clip.description, clip.location,
         clip.camera, clip.filename, ...(clip.tags || [])].join(' ').toLowerCase();
@@ -1554,8 +1587,8 @@ function clearAllFilters() {
   document.querySelectorAll('[data-filter="location"]').forEach(b => {
     b.classList.toggle('active', b.dataset.value === 'all');
   });
-  document.querySelectorAll('.stab').forEach(b => {
-    b.classList.toggle('active', b.dataset.subject === 'all');
+  document.querySelectorAll('[data-filter="subject"]').forEach(b => {
+    b.classList.toggle('active', b.dataset.value === 'all');
   });
   document.getElementById('sortSelect').value = 'default';
   currentPage = 1;
@@ -1844,17 +1877,4 @@ function escHtml(str) {
 
 // ── KEYBOARD ──
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeVideoModal();
-    closeReelModalBtn();
-    closeEnquiry();
-    document.getElementById('lightboxPanel').classList.remove('open');
-    closeDrawer();
-  }
-});
-
-// ── INIT ──
-loadData();
-</script>
-</body>
-</html>
+  if (e.key === 'Escape
