@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
-<title>East African Stock Footage Archive | Highly Visual</title>
+<title>Highly Visual &#8212; Stock Footage Archive</title>
 <link rel="icon" href="favicon.1.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #0a0a0a;
@@ -1086,86 +1086,12 @@
     .clip-title { font-size: 0.85rem; }
   }
 
-  /* &#9472;&#9472; SHOWREELS &#9472;&#9472; */
-  .showreels { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); max-height: 280px; overflow: hidden; }
-  .reel-card { position: relative; overflow: hidden; cursor: pointer; border-right: 1px solid var(--border); }
-  .reel-card:last-child { border-right: none; }
-  .reel-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
-  .reel-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.6; transition: opacity 0.35s, transform 0.5s; }
-  .reel-card:hover .reel-thumb img { opacity: 0.85; transform: scale(1.04); }
-  .reel-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 60%); pointer-events: none; }
-  .reel-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; z-index: 2; }
-  .reel-label { display: flex; flex-direction: column; gap: 2px; }
-  .reel-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(200,169,110,0.75); }
-  .reel-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(14px, 1.8vw, 20px); letter-spacing: 0.06em; color: #fff; line-height: 1; }
-  .reel-dur { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
-  .reel-play { width: 36px; height: 36px; border: 1.5px solid rgba(255,255,255,0.45); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); color: #fff; flex-shrink: 0; transform: scale(0.88); transition: transform 0.2s, background 0.2s, border-color 0.2s; }
-  .reel-card:hover .reel-play { transform: scale(1); background: rgba(200,169,110,0.3); border-color: var(--accent); }
-
-  /* &#9472;&#9472; FILTER BAR &#9472;&#9472; */
   .filter-bar { position: sticky; top: 170px; z-index: 90; background: rgba(17,17,17,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
   .filter-bar-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
-  .fb-search-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
-  .fb-search-inner { position: relative; flex: 1; }
-  .fb-search-inner input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 3px; padding: 0.5rem 1rem 0.5rem 2.4rem; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 300; outline: none; transition: border-color 0.2s; }
-  .fb-search-inner input:focus { border-color: var(--accent); }
-  .fb-search-inner input::placeholder { color: var(--text-faint); }
-  .fb-filter-row { display: flex; align-items: center; gap: 0.35rem; overflow-x: auto; scrollbar-width: none; min-height: 42px; flex-wrap: nowrap; }
-  .fb-filter-row::-webkit-scrollbar { display: none; }
-  .fb-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; margin: 0 0.4rem; }
-  .fb-pills { display: flex; gap: 0.3rem; flex-wrap: nowrap; }
-  .view-toggle { display: flex; gap: 2px; flex-shrink: 0; }
-  .view-btn { background: transparent; border: 1px solid var(--border); color: var(--text-faint); padding: 5px 7px; border-radius: 2px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
-  .view-btn.active { border-color: var(--accent); color: var(--accent); }
-
-  /* &#9472;&#9472; GRID VIEW &#9472;&#9472; */
-  .clips-container.grid-view { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 2px; padding-top: 2px; }
-  .clips-container.grid-view .clip-row { display: flex; flex-direction: column; border-bottom: none; background: var(--surface); }
-  .clips-container.grid-view .clip-thumb { width: 100%; }
-  .clips-container.grid-view .clip-info { padding: 0.65rem 0.75rem 0.5rem; flex: 1; }
-  .clips-container.grid-view .clip-title { font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .clips-container.grid-view .clip-desc { display: none; }
-  .clips-container.grid-view .clip-actions { padding: 0 0.75rem 0.75rem; flex-direction: row; align-items: center; opacity: 0; transition: opacity 0.2s; }
-  .clips-container.grid-view .clip-row:hover .clip-actions { opacity: 1; }
-  .clips-container.grid-view .vimeo-link { display: none; }
-
-  /* &#9472;&#9472; REEL MODAL &#9472;&#9472; */
-  .reel-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 1100; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
-  .reel-modal.active { opacity: 1; pointer-events: all; }
-  .reel-modal-inner { width: 100%; max-width: 900px; }
-  .reel-modal-header { display: flex; align-items: flex-start; justify-content: space-between; padding-bottom: 12px; gap: 1rem; }
-  .reel-modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--text); }
-  .reel-modal-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-faint); text-transform: uppercase; margin-top: 3px; }
-  .reel-modal-close { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.15s; flex-shrink: 0; }
-  .reel-modal-close:hover { background: rgba(255,255,255,0.2); }
-  .reel-modal-frame { position: relative; aspect-ratio: 16/9; background: #000; border-radius: 3px; overflow: hidden; }
-  .reel-modal-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-
-  /* &#9472;&#9472; MOBILE FAB / DRAWER &#9472;&#9472; */
-  .fab { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--bg); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.12em; padding: 12px 24px; border-radius: 30px; cursor: pointer; z-index: 150; box-shadow: 0 4px 20px rgba(0,0,0,0.6); white-space: nowrap; }
-  .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 155; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-  .drawer-overlay.open { opacity: 1; pointer-events: all; }
-  .drawer { position: fixed; bottom: -100%; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); z-index: 160; border-radius: 12px 12px 0 0; padding: 1.25rem 1.25rem 2.5rem; transition: bottom 0.35s cubic-bezier(0.16,1,0.3,1); max-height: 80vh; overflow-y: auto; }
-  .drawer.open { bottom: 0; }
-  .drawer-handle { width: 36px; height: 3px; background: var(--border); border-radius: 2px; margin: 0 auto 1.25rem; }
-  .drawer-section { margin-bottom: 1.25rem; }
-  .drawer-section-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.65rem; }
-  .drawer-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .btn-apply { width: 100%; margin-top: 0.5rem; background: var(--accent); color: var(--bg); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; letter-spacing: 0.12em; padding: 0.85rem; border-radius: 4px; cursor: pointer; }
-
-  /* &#9472;&#9472; RESPONSIVE UPDATES &#9472;&#9472; */
-  @media (max-width: 768px) {
-    .header-inner { height: auto; padding: 0.75rem 0; }
-    .logo img { height: 60px !important; }
-    .filter-bar { display: none; }
-    .fab { display: block; }
-    .showreels { max-height: none; }
-  }
-  @media (max-width: 420px) {
-    .showreels { grid-template-columns: 1fr; }
-    .reel-card { border-right: none !important; border-bottom: 1px solid var(--border); }
-    .reel-card:last-child { border-bottom: none; }
-  }
+  .fb-row { display: flex; align-items: center; gap: 0.35rem; overflow-x: auto; scrollbar-width: none; min-height: 46px; }
+  .fb-row::-webkit-scrollbar { display: none; }
+  .fb-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); white-space: nowrap; flex-shrink: 0; }
+  .fb-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; margin: 0 0.3rem; }
 </style>
 </head>
 <body>
@@ -1175,6 +1101,15 @@
   <div class="header-inner">
     <div class="logo">
       <img src="highly visual white.png" alt="Highly Visual" style="height:160px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));">
+    </div>
+    <div class="header-search">
+      <div class="header-search-inner">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type&#8230;" autocomplete="off">
+      </div>
+      <button class="search-btn" onclick="executeSearch()">SEARCH</button>
     </div>
     <div class="header-actions">
       <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
@@ -1188,68 +1123,30 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO / FILTERS -->
 <div class="hero">
   <div class="hero-inner">
     <h1>STOCK <span>FOOTAGE</span> ARCHIVE</h1>
     <div class="hero-meta" id="heroMeta">Loading archive&#8230;</div>
-  </div>
-  <div class="showreels">
-    <div class="reel-card" onclick="openReel('1012359827','Aerial Archive Teaser','1:07','Drone &amp; Aerial')">
-      <div class="reel-thumb">
-        <img src="https://i.vimeocdn.com/video/1930112798-15ce7a70c6d17045c0a70043c68712b0f396877fefb4275f8ee3cdfbab74d787-d_1280x720?region=us" alt="Aerial Stock Teaser" loading="lazy" referrerpolicy="no-referrer">
-        <div class="reel-overlay">
-          <div class="reel-label">
-            <div class="reel-eyebrow">Showreel</div>
-            <div class="reel-title">AERIAL ARCHIVE</div>
-            <div class="reel-dur">1:07 &middot; Drone &amp; Aerial</div>
-          </div>
-          <div class="reel-play"><svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="reel-card" onclick="openReel('795492631','Long Lens Wildlife Teaser','1:13','Telephoto &amp; Long Lens')">
-      <div class="reel-thumb">
-        <img src="https://i.vimeocdn.com/video/1602266963-445514cb87ddfb82f39750b77d1323a9accbf78558fc8423ed6cb5fa71131331-d_1280x720?region=us" alt="Long Lens Archive Teaser" loading="lazy" referrerpolicy="no-referrer">
-        <div class="reel-overlay">
-          <div class="reel-label">
-            <div class="reel-eyebrow">Showreel</div>
-            <div class="reel-title">LONG LENS WILDLIFE</div>
-            <div class="reel-dur">1:13 &middot; Telephoto &amp; Long Lens</div>
-          </div>
-          <div class="reel-play"><svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg></div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 
 <!-- FILTER BAR -->
 <div class="filter-bar">
   <div class="filter-bar-inner">
-    <div class="fb-search-row">
-      <div class="fb-search-inner">
-        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type&#8230;" autocomplete="off">
-      </div>
-      <button class="search-btn" onclick="executeSearch()">SEARCH</button>
-      <div class="view-toggle">
-        <button class="view-btn" id="viewList" onclick="setView('list')" title="List view"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="view-btn active" id="viewGrid" onclick="setView('grid')" title="Grid view"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
-      </div>
-    </div>
-    <div class="fb-filter-row">
+    <div class="fb-row">
       <span class="fb-label">Subject</span>
-      <button class="filter-chip active" data-filter="subject" data-value="all" onclick="setSubjectChip('all',this)">All</button>
-      <button class="filter-chip" data-filter="subject" data-value="wildlife" onclick="setSubjectChip('wildlife',this)">Wildlife</button>
-      <button class="filter-chip" data-filter="subject" data-value="aerial" onclick="setSubjectChip('aerial',this)">Aerial</button>
-      <button class="filter-chip" data-filter="subject" data-value="longlens" onclick="setSubjectChip('longlens',this)">Long Lens</button>
-      <button class="filter-chip" data-filter="subject" data-value="landscape" onclick="setSubjectChip('landscape',this)">Landscape</button>
-      <button class="filter-chip" data-filter="subject" data-value="coast" onclick="setSubjectChip('coast',this)">Coast &amp; Marine</button>
-      <button class="filter-chip" data-filter="subject" data-value="nairobi" onclick="setSubjectChip('nairobi',this)">Nairobi</button>
+      <button class="filter-chip active" data-filter="subject" data-value="all" onclick="setSubject('all',this)">All</button>
+      <button class="filter-chip" data-filter="subject" data-value="wildlife" onclick="setSubject('wildlife',this)">Wildlife</button>
+      <button class="filter-chip" data-filter="subject" data-value="aerial" onclick="setSubject('aerial',this)">Aerial</button>
+      <button class="filter-chip" data-filter="subject" data-value="longlens" onclick="setSubject('longlens',this)">Long Lens</button>
+      <button class="filter-chip" data-filter="subject" data-value="landscape" onclick="setSubject('landscape',this)">Landscape</button>
+      <button class="filter-chip" data-filter="subject" data-value="coast" onclick="setSubject('coast',this)">Coast &amp; Marine</button>
+      <button class="filter-chip" data-filter="subject" data-value="nairobi" onclick="setSubject('nairobi',this)">Nairobi</button>
       <div class="fb-divider"></div>
       <span class="fb-label">Location</span>
-      <div class="fb-pills" id="locationFilters">
+      <div id="locationFilters" style="display:flex;gap:0.3rem;flex-wrap:nowrap;">
         <button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>
         <button class="filter-chip" data-filter="location" data-value="Tsavo" onclick="setFilter('location','Tsavo',this)">Tsavo</button>
         <button class="filter-chip" data-filter="location" data-value="Samburu" onclick="setFilter('location','Samburu',this)">Samburu &amp; North</button>
@@ -1264,7 +1161,7 @@
         <option value="default">Sort: Default</option>
         <option value="newest">Newest First</option>
         <option value="oldest">Oldest First</option>
-        <option value="az">Title A&#8211;Z</option>
+        <option value="az">Title A-Z</option>
       </select>
     </div>
   </div>
@@ -1277,7 +1174,7 @@
 </div>
 
 <!-- CLIP LIST -->
-<div class="clips-container grid-view" id="clipsContainer">
+<div class="clips-container" id="clipsContainer">
   <div class="loading">Loading archive&#8230;</div>
 </div>
 
@@ -1297,62 +1194,6 @@
     <div class="footer-copy">&#169; 2026 Highly Visual &#183; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7ded9d1d8f7dfded0dfdbcec1dec4c2d6db99d4d8da">[email&#160;protected]</a> &#183; All footage 4K or higher &#183; Licensed drone operator</div>
   </div>
 </footer>
-
-<!-- REEL MODAL -->
-<div class="reel-modal" id="reelModal" onclick="if(event.target===this)closeReelModalBtn()">
-  <div class="reel-modal-inner">
-    <div class="reel-modal-header">
-      <div>
-        <div class="reel-modal-title" id="reelModalTitle"></div>
-        <div class="reel-modal-sub" id="reelModalSub"></div>
-      </div>
-      <button class="reel-modal-close" onclick="closeReelModalBtn()">&#x2715;</button>
-    </div>
-    <div class="reel-modal-frame" id="reelModalFrame"></div>
-  </div>
-</div>
-
-<!-- MOBILE FAB -->
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-<button class="fab" id="fab" onclick="openDrawer()">&#9776; FILTER &amp; SORT</button>
-<div class="drawer" id="drawer">
-  <div class="drawer-handle"></div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Subject</div>
-    <div class="drawer-pills">
-      <button class="filter-chip active" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('all',null)">All</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('wildlife',null)">Wildlife</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('aerial',null)">Aerial</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('longlens',null)">Long Lens</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('landscape',null)">Landscape</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('coast',null)">Coast</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('nairobi',null)">Nairobi</button>
-    </div>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Location</div>
-    <div class="drawer-pills">
-      <button class="filter-chip active" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','all',null)">All</button>
-      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Tsavo',null)">Tsavo</button>
-      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Samburu',null)">Samburu &amp; North</button>
-      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Mara',null)">Maasai Mara</button>
-      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Lakes',null)">Lakes</button>
-      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Amboseli',null)">Amboseli</button>
-      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Coast',null)">Coast</button>
-      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Nairobi',null)">Nairobi</button>
-    </div>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Sort</div>
-    <div class="drawer-pills">
-      <button class="filter-chip active" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='default';applyFilters()">Default</button>
-      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='newest';applyFilters()">Newest First</button>
-      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='oldest';applyFilters()">Oldest First</button>
-      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='az';applyFilters()">Title A&#8211;Z</button>
-    </div>
-  </div>
-  <button class="btn-apply" onclick="closeDrawer()">APPLY FILTERS</button>
-</div>
 
 <!-- VIDEO MODAL -->
 <div class="modal-overlay" id="videoModal" onclick="closeModal(event)">
@@ -1455,7 +1296,6 @@ const state = {
   sort:     'default',
 };
 
-// Location groups
 const LOCATION_GROUPS = {
   'Tsavo':    ['Tsavo East','Tsavo West','Rukinga Ranch'],
   'Samburu':  ['Samburu','Shaba / Samburu Hills','Namunyak / Reteti','Reteti Elephant Sanctuary','Ol Jogi'],
@@ -1466,20 +1306,19 @@ const LOCATION_GROUPS = {
   'Nairobi':  ['Nairobi','Nairobi National Park','Mount Kenya'],
 };
 
-// Subject filters
 const SUBJECT_FILTERS = {
   aerial:    c => ['Mavic 3 Cine','Mavic 2 Pro','Mavic 3 Pro Cine','Inspire 2 / X5S','Inspire 3','Inspire 1 / X3'].includes(c.camera),
   longlens:  c => ['Sony FX6','Sony FX6 RAW'].includes(c.camera),
   wildlife:  c => {
-    const a = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wild dog','wildebeest','gazelle','impala','oryx','hartebeest','ostrich','heron','kingfisher'];
+    const animals = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wild dog','wildebeest','gazelle','impala','oryx','hartebeest','ostrich','heron','kingfisher'];
     const h = (c.tags||[]).join(' ').toLowerCase();
-    return a.some(t => h.includes(t));
+    return animals.some(t => h.includes(t));
   },
   landscape: c => {
-    const a = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wildebeest','gazelle','impala','oryx'];
-    const l = ['no animals','uninhabited','landscape','scenery','terrain','sunset','sunrise','no people'];
+    const animals = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wildebeest','gazelle','impala','oryx'];
+    const land = ['no animals','uninhabited','landscape','scenery','terrain','sunset','sunrise','no people'];
     const h = (c.tags||[]).join(' ').toLowerCase();
-    return l.some(t => h.includes(t)) && !a.some(t => h.includes(t));
+    return land.some(t => h.includes(t)) && !animals.some(t => h.includes(t));
   },
   coast:   c => ['Watamu','Mombasa','Lamu / Coast'].includes(c.location),
   nairobi: c => ['Nairobi','Nairobi National Park','Mount Kenya'].includes(c.location),
@@ -1505,6 +1344,7 @@ async function loadData() {
 }
 
 function init() {
+  buildLocationFilters();
   document.getElementById('heroMeta').textContent =
     `${allFootage.length.toLocaleString()} clips &#183; East Africa &#183; 4K & higher`;
 
@@ -1531,20 +1371,8 @@ function executeSearch() {
   applyFilters();
 }
 
-
-// &#9472;&#9472; VIEW TOGGLE &#9472;&#9472;
-let currentView = 'grid';
-function setView(v) {
-  currentView = v;
-  document.getElementById('clipsContainer').classList.toggle('grid-view', v === 'grid');
-  document.getElementById('viewGrid').classList.toggle('active', v === 'grid');
-  document.getElementById('viewList').classList.toggle('active', v === 'list');
-}
-
 // &#9472;&#9472; LOCATION FILTERS &#9472;&#9472;
-function buildLocationFilters() {
-  // Location buttons are hardcoded in HTML
-}
+function buildLocationFilters() { /* hardcoded in HTML */ }
 
 // &#9472;&#9472; FILTERS &#9472;&#9472;
 function setFilter(type, value, el) {
@@ -1588,10 +1416,10 @@ function applyFilters() {
 function clearAllFilters() {
   state.search = '';
   state.location = 'all';
-  state.subject = 'all';
   document.getElementById('searchInput').value = '';
   document.querySelectorAll('[data-filter="location"]').forEach(b => b.classList.toggle('active', b.dataset.value === 'all'));
   document.querySelectorAll('[data-filter="subject"]').forEach(b => b.classList.toggle('active', b.dataset.value === 'all'));
+  state.subject = 'all';
   document.getElementById('sortSelect').value = 'default';
   currentPage = 1;
   applyFilters();
@@ -1727,21 +1555,6 @@ function closeVideoModal() {
   document.body.style.overflow = '';
 }
 
-// &#9472;&#9472; REEL MODAL &#9472;&#9472;
-function openReel(id, title, dur, type) {
-  document.getElementById('reelModalTitle').textContent = title;
-  document.getElementById('reelModalSub').textContent = 'Showreel &#183; ' + dur + ' &#183; ' + type;
-  document.getElementById('reelModalFrame').innerHTML =
-    '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
-  document.getElementById('reelModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeReelModalBtn() {
-  document.getElementById('reelModal').classList.remove('active');
-  document.getElementById('reelModalFrame').innerHTML = '';
-  document.body.style.overflow = '';
-}
-
 // &#9472;&#9472; LIGHTBOX &#9472;&#9472;
 function toggleLightbox() {
   document.getElementById('lightboxPanel').classList.toggle('open');
@@ -1840,28 +1653,12 @@ function searchTag(tag) {
   document.getElementById('searchInput').value = tag;
   state.search = tag.toLowerCase();
   state.location = 'all';
-  document.querySelectorAll('.filter-chip').forEach(b => {
-    b.classList.toggle('active', b.dataset.value === 'all');
-  });
+  document.querySelectorAll('[data-filter="location"]').forEach(b => b.classList.toggle('active', b.dataset.value === 'all'));
+  document.querySelectorAll('[data-filter="subject"]').forEach(b => b.classList.toggle('active', b.dataset.value === 'all'));
+  state.subject = 'all';
   currentPage = 1;
   applyFilters();
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// &#9472;&#9472; MOBILE DRAWER &#9472;&#9472;
-function openDrawer() {
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('drawerOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeDrawer() {
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('drawerOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function drawerPill(el, group) {
-  document.querySelectorAll('[data-group="' + group + '"]').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
 }
 
 // &#9472;&#9472; UTILS &#9472;&#9472;
@@ -1874,10 +1671,8 @@ function escHtml(str) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeVideoModal();
-    closeReelModalBtn();
     closeEnquiry();
     document.getElementById('lightboxPanel').classList.remove('open');
-    closeDrawer();
   }
 });
 
