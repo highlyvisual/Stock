@@ -3,27 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>East African Stock Footage Archive | Highly Visual — Wildlife, Aerial & Landscape</title>
+<meta name="referrer" content="no-referrer">
+<title>East African Stock Footage Archive | Highly Visual</title>
 <link rel="icon" href="favicon.1.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGallery",
-  "name": "Highly Visual — East African Stock Footage Archive",
-  "description": "A searchable archive of over 2,600 licensed 4K stock footage clips filmed in East Africa, including wildlife, aerial drone footage, and landscapes across Kenya.",
-  "url": "https://stock.highlyvisual.com",
-  "provider": {
-    "@type": "Organization",
-    "name": "Highly Visual",
-    "url": "https://www.highlyvisual.com",
-    "email": "info@highlyvisual.com",
-    "sameAs": ["https://www.instagram.com/highlyvisualke/","https://vimeo.com/highlyvisual"]
-  }
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #0a0a0a;
@@ -52,12 +37,12 @@
     overflow-x: hidden;
   }
 
-  /* ── HEADER ── */
+  /* &#9472;&#9472; HEADER &#9472;&#9472; */
   header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(10,10,10,0.96);
+    background: rgba(10,10,10,0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
@@ -68,22 +53,50 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 2rem;
     height: 170px;
   }
 
   .logo {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
     flex-shrink: 0;
   }
 
-  .logo img { height: 160px; width: auto; filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
+  .header-search {
+    flex: 1;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .header-search-inner {
+    position: relative;
+    flex: 1;
+  }
+
+  .header-search input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .header-search input:focus { border-color: var(--accent); }
+  .header-search input::placeholder { color: var(--text-faint); }
 
   .search-icon {
     position: absolute;
-    left: 0.7rem;
+    left: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-faint);
@@ -98,18 +111,19 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 0.9rem;
     letter-spacing: 0.1em;
-    padding: 0.55rem 1.2rem;
+    padding: 0.6rem 1.2rem;
     cursor: pointer;
     white-space: nowrap;
     flex-shrink: 0;
     transition: background 0.2s;
   }
+
   .search-btn:hover { background: var(--accent2); }
 
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     flex-shrink: 0;
   }
 
@@ -122,15 +136,18 @@
     border-radius: 3px;
     color: var(--text-dim);
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.1em;
     padding: 0.5rem 0.9rem;
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
-    text-transform: uppercase;
   }
-  .lightbox-btn:hover, .lightbox-btn.has-items { border-color: var(--accent); color: var(--accent); }
+
+  .lightbox-btn:hover, .lightbox-btn.has-items {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 
   .lightbox-count {
     background: var(--accent);
@@ -138,272 +155,67 @@
     border-radius: 50%;
     width: 18px;
     height: 18px;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 500;
   }
 
-  /* ── HERO ── */
+  /* &#9472;&#9472; HERO &#9472;&#9472; */
   .hero {
     border-bottom: 1px solid var(--border);
-    background: var(--surface);
+    padding: 3rem 2rem 2.5rem;
+    background: linear-gradient(180deg, #0f0f0a 0%, var(--bg) 100%);
   }
 
-  .hero-text {
-    padding: 2.5rem 2rem 2rem;
-    background: linear-gradient(160deg, #0f0f0a 0%, var(--surface) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-text::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 100% at 85% 50%, rgba(200,169,110,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-text-inner {
+  .hero-inner {
     max-width: 1400px;
     margin: 0 auto;
-    position: relative;
   }
 
-  .hero-text h1 {
+  .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    letter-spacing: 0.06em;
-    line-height: 0.95;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.08em;
+    line-height: 1;
     color: var(--text);
     margin-bottom: 0.5rem;
   }
-  .hero-text h1 span { color: var(--accent); }
+
+  .hero h1 span { color: var(--accent); }
 
   .hero-meta {
     font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
     color: var(--text-dim);
     text-transform: uppercase;
+    margin-bottom: 2rem;
   }
 
-  /* ── SHOWREELS ── */
-  .showreels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--border);
-  }
-
-  .reel-card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    border-right: 1px solid var(--border);
-  }
-  .reel-card:last-child { border-right: none; }
-
-  .reel-thumb {
-    position: relative;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    background: #000;
-  }
-
-  .reel-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.6;
-    transition: opacity 0.35s, transform 0.5s ease;
-  }
-  .reel-card:hover .reel-thumb img { opacity: 0.85; transform: scale(1.04); }
-
-  .reel-thumb::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
-    pointer-events: none;
-  }
-
-  .reel-overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 12px 16px;
+  /* &#9472;&#9472; FILTERS &#9472;&#9472; */
+  .filters {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 10px;
-    z-index: 2;
-  }
-
-  .reel-label { display: flex; flex-direction: column; gap: 2px; }
-
-  .reel-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(200,169,110,0.75);
-  }
-
-  .reel-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(14px, 1.8vw, 20px);
-    letter-spacing: 0.06em;
-    color: #fff;
-    line-height: 1;
-  }
-
-  .reel-dur {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.38);
-    margin-top: 2px;
-  }
-
-  .reel-play {
-    width: 36px; height: 36px;
-    border: 1.5px solid rgba(255,255,255,0.45);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.3);
-    color: #fff;
-    flex-shrink: 0;
-    transform: scale(0.88);
-    transition: transform 0.2s, background 0.2s, border-color 0.2s;
-  }
-  .reel-card:hover .reel-play {
-    transform: scale(1);
-    background: rgba(200,169,110,0.3);
-    border-color: var(--accent);
-  }
-
-  /* ── FILTER BAR (sticky) ── */
-  .filter-bar {
-    position: sticky;
-    top: 170px;
-    z-index: 90;
-    background: rgba(17,17,17,0.97);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .filter-bar-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Search row */
-  .fb-search-row {
-    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.7rem 0 0.65rem;
-    border-bottom: 1px solid var(--border);
   }
 
-  .header-search-inner {
-    position: relative;
-    flex: 1;
-  }
-
-  .header-search-inner input {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 0.5rem 1rem 0.5rem 2.4rem;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .header-search-inner input:focus { border-color: var(--accent); }
-  .header-search-inner input::placeholder { color: var(--text-faint); }
-
-  .search-icon {
-    position: absolute;
-    left: 0.7rem;
-    top: 50%;
-    transform: translateY(-50%);
+  .filter-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
     color: var(--text-faint);
-    pointer-events: none;
-  }
-
-  .search-btn {
-    background: var(--accent);
-    border: none;
-    border-radius: 3px;
-    color: var(--bg);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    padding: 0.5rem 1.2rem;
-    cursor: pointer;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: background 0.2s;
-  }
-  .search-btn:hover { background: var(--accent2); }
-
-  /* Filter row */
-  .fb-filter-row {
-    display: flex;
-    align-items: stretch;
-    min-height: 42px;
-    gap: 0;
-  }
-
-  .fb-section {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 7px 0;
-    min-width: 0;
-    flex: 1;
-  }
-
-  .fb-section--noshrink {
-    flex: 0 0 auto;
-  }
-
-  .fb-divider {
-    width: 1px;
-    background: var(--border);
-    margin: 8px 0.85rem;
-    flex-shrink: 0;
-  }
-
-  .fb-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-faint);
-    white-space: nowrap;
-    flex-shrink: 0;
+    margin-right: 0.25rem;
   }
 
-  .fb-pills {
+  .filter-group {
     display: flex;
-    gap: 0.3rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 2px 0;
-    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
   }
-  .fb-pills::-webkit-scrollbar { display: none; }
 
   .filter-chip {
     background: none;
@@ -411,54 +223,45 @@
     border-radius: 2px;
     color: var(--text-dim);
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
-    padding: 0.28rem 0.6rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.75rem;
     cursor: pointer;
     transition: all 0.15s;
     text-transform: uppercase;
-    white-space: nowrap;
-    flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
+
   .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
   .filter-chip.active { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 500; }
 
+  .filter-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 0.25rem;
+  }
+
   .sort-select {
-    background: transparent;
+    background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 2px;
     color: var(--text-dim);
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
-    padding: 0.3rem 0.65rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.75rem;
     cursor: pointer;
     outline: none;
     text-transform: uppercase;
   }
 
-  .view-toggle { display: flex; gap: 2px; }
-
-  .view-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-faint);
-    padding: 5px 7px;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.15s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .view-btn.active { border-color: var(--accent); color: var(--accent); }
-  .view-btn:hover { border-color: var(--text-dim); color: var(--text-dim); }
-
-  /* ── RESULTS BAR ── */
+  /* &#9472;&#9472; RESULTS BAR &#9472;&#9472; */
   .results-bar {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0.75rem 2rem;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -467,11 +270,12 @@
 
   .results-count {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.15em;
     color: var(--text-dim);
     text-transform: uppercase;
   }
+
   .results-count span { color: var(--accent); }
 
   .clear-filters {
@@ -479,24 +283,20 @@
     border: none;
     color: var(--text-faint);
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.1em;
     cursor: pointer;
     text-transform: uppercase;
     transition: color 0.2s;
   }
+
   .clear-filters:hover { color: var(--danger); }
 
-  /* ── CLIPS CONTAINER ── */
-  .clips-outer {
+  /* &#9472;&#9472; CLIP LIST &#9472;&#9472; */
+  .clips-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem 4rem;
-  }
-
-  /* LIST VIEW (default) */
-  .clips-container {
-    display: block;
   }
 
   .clip-row {
@@ -509,6 +309,7 @@
     position: relative;
     animation: fadeIn 0.3s ease both;
   }
+
   .clip-row:hover { background: var(--surface); }
   .clip-row:hover .clip-play-overlay { opacity: 1; }
 
@@ -520,546 +321,746 @@
     flex-shrink: 0;
     background: var(--surface2);
   }
+
   .clip-thumb img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     transition: transform 0.4s ease;
   }
+
   .clip-row:hover .clip-thumb img { transform: scale(1.04); }
 
   .clip-play-overlay {
-    position: absolute; inset: 0;
+    position: absolute;
+    inset: 0;
     background: rgba(0,0,0,0.45);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
   }
+
   .play-icon {
-    width: 40px; height: 40px;
+    width: 40px;
+    height: 40px;
     border: 2px solid rgba(255,255,255,0.9);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   .play-icon svg { margin-left: 3px; }
 
   .thumb-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(--surface2);
   }
+
   .thumb-placeholder svg { opacity: 0.2; }
 
   .clip-duration {
-    position: absolute; bottom: 6px; right: 6px;
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
     background: rgba(0,0,0,0.75);
-    font-family: 'DM Mono', monospace; font-size: 0.6rem;
-    color: #fff; padding: 2px 5px; border-radius: 2px; letter-spacing: 0.05em;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
   }
 
   .clip-info {
-    padding: 0.875rem 1.25rem;
-    display: flex; flex-direction: column;
-    justify-content: space-between; min-width: 0;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
   }
 
   .clip-title {
-    font-size: 0.9rem; font-weight: 400;
-    color: var(--text); line-height: 1.4; margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
   }
 
   .clip-desc {
-    font-size: 0.78rem; color: var(--text-dim); line-height: 1.5;
-    margin-bottom: 0.65rem;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .clip-meta-row {
-    display: flex; flex-wrap: wrap; gap: 0.4rem;
-    align-items: center; margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
   }
 
   .meta-pill {
-    font-family: 'DM Mono', monospace; font-size: 0.58rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.18rem 0.45rem; border-radius: 2px;
-    border: 1px solid var(--border); color: var(--text-dim); white-space: nowrap;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    white-space: nowrap;
   }
+
   .meta-pill.location { border-color: #3a4a3a; color: #8ab08a; }
   .meta-pill.camera   { border-color: #3a3a4a; color: #8a8ab0; }
   .meta-pill.fps      { border-color: #4a3a3a; color: #b08a8a; }
 
   .clip-tags {
-    display: flex; flex-wrap: wrap; gap: 0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
   }
 
   .tag {
-    background: var(--tag-bg); border: 1px solid var(--tag-border);
-    border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 0.58rem;
-    color: var(--text-faint); padding: 0.12rem 0.38rem;
-    letter-spacing: 0.05em; cursor: pointer; transition: all 0.15s;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    padding: 0.15rem 0.4rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.15s;
   }
+
   .tag:hover { border-color: var(--accent); color: var(--accent); }
 
   .clip-actions {
-    padding: 0.875rem 1rem;
-    display: flex; flex-direction: column;
-    align-items: flex-end; justify-content: space-between;
-    gap: 0.5rem; flex-shrink: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-shrink: 0;
   }
 
   .add-to-lightbox {
-    background: none; border: 1px solid var(--border); border-radius: 2px;
-    color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 0.6rem;
-    letter-spacing: 0.1em; padding: 0.38rem 0.65rem;
-    cursor: pointer; transition: all 0.2s; text-transform: uppercase; white-space: nowrap;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
+
   .add-to-lightbox:hover { border-color: var(--accent); color: var(--accent); }
   .add-to-lightbox.added { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 
   .vimeo-link {
-    font-family: 'DM Mono', monospace; font-size: 0.58rem;
-    letter-spacing: 0.08em; color: var(--text-faint);
-    text-decoration: none; text-transform: uppercase;
-    transition: color 0.2s; padding: 0.38rem 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    padding: 0.4rem 0;
   }
+
   .vimeo-link:hover { color: var(--accent); }
 
-  /* ── GRID VIEW ── */
-  .clips-container.grid-view {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 2px;
-    padding-top: 2px;
-  }
-
-  .clips-container.grid-view .clip-row {
-    display: flex; flex-direction: column;
-    border-bottom: none;
-    background: var(--surface);
-  }
-
-  .clips-container.grid-view .clip-thumb {
-    width: 100%; aspect-ratio: 16/9;
-  }
-
-  .clips-container.grid-view .clip-info {
-    padding: 0.65rem 0.75rem 0.75rem;
-    flex: 1; gap: 0.4rem;
-  }
-
-  .clips-container.grid-view .clip-title {
-    font-size: 0.8rem;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  }
-
-  .clips-container.grid-view .clip-desc { display: none; }
-
-  .clips-container.grid-view .clip-tags {
-    overflow: hidden; max-height: 28px;
-  }
-
-  .clips-container.grid-view .clip-actions {
-    padding: 0 0.75rem 0.75rem;
-    flex-direction: row; align-items: center; justify-content: space-between;
-  }
-
-  .clips-container.grid-view .add-to-lightbox {
-    font-size: 0.55rem; padding: 0.28rem 0.55rem;
-  }
-
-  .clips-container.grid-view .vimeo-link { display: none; }
-
-  /* Grid hover — show add button */
-  .clips-container.grid-view .clip-row .clip-actions { opacity: 0; transition: opacity 0.2s; }
-  .clips-container.grid-view .clip-row:hover .clip-actions { opacity: 1; }
-
-  /* ── VIDEO MODAL ── */
+  /* &#9472;&#9472; VIDEO MODAL &#9472;&#9472; */
   .modal-overlay {
-    position: fixed; inset: 0;
+    position: fixed;
+    inset: 0;
     background: rgba(0,0,0,0.92);
     z-index: 1000;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
-    opacity: 0; pointer-events: none; transition: opacity 0.25s;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
   }
+
   .modal-overlay.active { opacity: 1; pointer-events: all; }
 
   .modal {
-    position: relative; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 4px;
-    width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto;
-    transform: translateY(20px); transition: transform 0.25s;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.25s;
   }
+
   .modal-overlay.active .modal { transform: translateY(0); }
 
-  .modal-video { width: 100%; aspect-ratio: 16/9; background: #000; }
-  .modal-video iframe { width: 100%; height: 100%; border: none; display: block; }
+  .modal-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+  }
+
+  .modal-video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
 
   .modal-body { padding: 1.5rem; }
 
-  .modal-title { font-size: 1.05rem; font-weight: 400; margin-bottom: 0.65rem; line-height: 1.4; }
+  .modal-title {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
 
   .modal-desc {
-    font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1rem;
   }
 
   .modal-footer {
-    display: flex; justify-content: space-between; align-items: center;
-    padding-top: 1rem; border-top: 1px solid var(--border);
-    gap: 1rem; flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .modal-close {
-    position: absolute; top: 1rem; right: 1rem;
-    background: rgba(0,0,0,0.5); border: 1px solid var(--border);
-    border-radius: 50%; width: 36px; height: 36px;
-    color: var(--text); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; transition: background 0.2s;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: background 0.2s;
   }
+
   .modal-close:hover { background: var(--surface2); }
 
-  /* ── VIMEO REEL MODAL ── */
-  .reel-modal {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.94);
-    z-index: 1100;
-    display: flex; align-items: center; justify-content: center;
-    padding: 2rem;
-    opacity: 0; pointer-events: none; transition: opacity 0.25s;
-  }
-  .reel-modal.active { opacity: 1; pointer-events: all; }
-
-  .reel-modal-inner {
-    width: 100%; max-width: 900px;
-  }
-
-  .reel-modal-header {
-    display: flex; align-items: flex-start; justify-content: space-between;
-    padding-bottom: 12px; gap: 1rem;
-  }
-
-  .reel-modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem; letter-spacing: 0.08em; color: var(--text);
-  }
-
-  .reel-modal-sub {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-faint);
-    text-transform: uppercase; margin-top: 3px;
-  }
-
-  .reel-modal-close {
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
-    color: #fff; width: 32px; height: 32px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: background 0.15s; flex-shrink: 0;
-  }
-  .reel-modal-close:hover { background: rgba(255,255,255,0.2); }
-
-  .reel-modal-frame { position: relative; aspect-ratio: 16/9; background: #000; border-radius: 3px; overflow: hidden; }
-  .reel-modal-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-
-  /* ── LIGHTBOX PANEL ── */
+  /* &#9472;&#9472; LIGHTBOX PANEL &#9472;&#9472; */
   .lightbox-panel {
-    position: fixed; right: 0; top: 0; bottom: 0; width: 380px;
-    background: var(--surface); border-left: 1px solid var(--border);
-    z-index: 200; display: flex; flex-direction: column;
-    transform: translateX(100%); transition: transform 0.3s ease;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 380px;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
   }
+
   .lightbox-panel.open { transform: translateX(0); }
 
   .lightbox-header {
-    padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
+
   .lightbox-header h2 {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
-    letter-spacing: 0.1em; color: var(--accent);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
   }
 
   .close-panel {
-    background: none; border: none; color: var(--text-dim);
-    cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 0.25rem; transition: color 0.2s;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0.25rem;
+    transition: color 0.2s;
   }
+
   .close-panel:hover { color: var(--text); }
 
   .lightbox-items {
-    flex: 1; overflow-y: auto; padding: 1rem;
-    display: flex; flex-direction: column; gap: 0.75rem;
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .lightbox-item {
-    display: flex; gap: 0.75rem; align-items: flex-start;
-    padding: 0.75rem; background: var(--surface2);
-    border-radius: 3px; border: 1px solid var(--border);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.75rem;
+    background: var(--surface2);
+    border-radius: 3px;
+    border: 1px solid var(--border);
   }
 
   .lightbox-item-num {
-    font-family: 'DM Mono', monospace; font-size: 0.65rem;
-    color: var(--accent); flex-shrink: 0; margin-top: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
   .lightbox-item-info { flex: 1; min-width: 0; }
 
   .lightbox-item-title {
-    font-size: 0.8rem; line-height: 1.4; color: var(--text); margin-bottom: 0.25rem;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .lightbox-item-meta {
-    font-family: 'DM Mono', monospace; font-size: 0.6rem;
-    color: var(--text-faint); letter-spacing: 0.05em;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
   }
 
   .remove-item {
-    background: none; border: none; color: var(--text-faint);
-    cursor: pointer; font-size: 0.9rem; padding: 0; line-height: 1;
-    transition: color 0.2s; flex-shrink: 0;
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+    flex-shrink: 0;
   }
+
   .remove-item:hover { color: var(--danger); }
 
   .lightbox-empty {
-    flex: 1; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    color: var(--text-faint); font-size: 0.85rem;
-    gap: 0.5rem; padding: 2rem; text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
   }
 
   .lightbox-footer {
-    padding: 1.25rem 1.5rem; border-top: 1px solid var(--border);
-    display: flex; flex-direction: column; gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .enquiry-btn {
-    width: 100%; background: var(--accent); border: none; border-radius: 3px;
-    color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
-    letter-spacing: 0.15em; padding: 0.85rem; cursor: pointer; transition: background 0.2s;
+    width: 100%;
+    background: var(--accent);
+    border: none;
+    border-radius: 3px;
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    padding: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
   }
+
   .enquiry-btn:hover { background: var(--accent2); }
   .enquiry-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
   .clear-lightbox {
-    background: none; border: none; color: var(--text-faint);
-    font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
-    cursor: pointer; text-align: center; text-transform: uppercase;
-    transition: color 0.2s; padding: 0.25rem;
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    padding: 0.25rem;
   }
+
   .clear-lightbox:hover { color: var(--danger); }
 
-  /* ── ENQUIRY MODAL ── */
+  /* &#9472;&#9472; ENQUIRY MODAL &#9472;&#9472; */
   .enquiry-modal {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.92);
-    z-index: 500; display: flex; align-items: center; justify-content: center;
-    padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.25s;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
   }
+
   .enquiry-modal.active { opacity: 1; pointer-events: all; }
 
   .enquiry-form {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 4px; width: 100%; max-width: 560px; padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 560px;
+    padding: 2rem;
   }
+
   .enquiry-form h2 {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
-    letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
   }
-  .enquiry-form > p {
-    font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1.5rem; line-height: 1.5;
+
+  .enquiry-form p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
   }
+
   .form-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
+
   .form-group {
-    display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
   }
+
   .form-group label {
-    font-family: 'DM Mono', monospace; font-size: 0.65rem;
-    letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
   }
+
   .form-group input,
-  .form-group select,
   .form-group textarea {
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 2px; padding: 0.6rem 0.8rem; color: var(--text);
-    font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 300;
-    outline: none; transition: border-color 0.2s; width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.6rem 0.8rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
   }
-  .form-group select { cursor: pointer; }
+
   .form-group input:focus,
-  .form-group select:focus,
   .form-group textarea:focus { border-color: var(--accent); }
   .form-group textarea { resize: vertical; min-height: 80px; }
 
   .selected-clips-preview {
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 2px; padding: 0.75rem; margin-bottom: 1rem;
-    max-height: 120px; overflow-y: auto;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    max-height: 120px;
+    overflow-y: auto;
   }
+
   .selected-clips-preview p {
-    font-family: 'DM Mono', monospace; font-size: 0.65rem;
-    color: var(--text-dim); letter-spacing: 0.05em;
-    margin-bottom: 0.25rem; line-height: 1.4;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
   }
 
   .form-actions {
-    display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
   }
+
   .btn-cancel {
-    background: none; border: 1px solid var(--border); border-radius: 2px;
-    color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 0.7rem;
-    letter-spacing: 0.1em; padding: 0.6rem 1.2rem; cursor: pointer;
-    text-transform: uppercase; transition: all 0.2s;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
   }
+
   .btn-cancel:hover { border-color: var(--text-dim); color: var(--text); }
+
   .btn-submit {
-    background: var(--accent); border: none; border-radius: 2px;
-    color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
-    letter-spacing: 0.15em; padding: 0.6rem 1.5rem; cursor: pointer; transition: background 0.2s;
+    background: var(--accent);
+    border: none;
+    border-radius: 2px;
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
   }
+
   .btn-submit:hover { background: var(--accent2); }
 
-  /* ── LOADING / EMPTY ── */
+  /* &#9472;&#9472; LOADING / EMPTY &#9472;&#9472; */
   .loading {
-    padding: 4rem 2rem; text-align: center; color: var(--text-faint);
-    font-family: 'DM Mono', monospace; font-size: 0.75rem;
-    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
   }
-  .no-results { padding: 4rem 2rem; text-align: center; color: var(--text-faint); }
+
+  .no-results {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-faint);
+  }
+
   .no-results h3 {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
-    letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
   }
+
   .no-results p { font-size: 0.85rem; }
 
-  /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
-  .footer-inner {
-    max-width: 1400px; margin: 0 auto;
-    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
-  }
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
-    letter-spacing: 0.15em; color: var(--text-dim);
-  }
-  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
-  .footer-links a {
-    font-family: 'DM Mono', monospace; font-size: 0.65rem;
-    letter-spacing: 0.15em; color: var(--text-faint);
-    text-decoration: none; text-transform: uppercase; transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--accent); }
-  .footer-copy {
-    font-family: 'DM Mono', monospace; font-size: 0.6rem;
-    color: var(--text-faint); letter-spacing: 0.1em;
+  /* &#9472;&#9472; FOOTER &#9472;&#9472; */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
   }
 
-  /* ── PAGINATION ── */
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+
+  /* &#9472;&#9472; PAGINATION &#9472;&#9472; */
   .pagination {
-    display: flex; justify-content: center; align-items: center;
-    gap: 0.5rem; padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
   }
+
   .page-btn {
-    background: none; border: 1px solid var(--border); border-radius: 2px;
-    color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 0.7rem;
-    letter-spacing: 0.05em; padding: 0.4rem 0.8rem; cursor: pointer;
-    transition: all 0.15s; min-width: 36px; text-align: center;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 36px;
+    text-align: center;
   }
+
   .page-btn:hover, .page-btn.active { border-color: var(--accent); color: var(--accent); }
   .page-btn.active { background: var(--accent); color: var(--bg); }
   .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-  /* ── SCROLLBAR ── */
+  /* &#9472;&#9472; SCROLLBAR &#9472;&#9472; */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
 
-  /* ── ANIMATIONS ── */
+  /* &#9472;&#9472; ANIMATIONS &#9472;&#9472; */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
   .success-msg {
-    text-align: center; padding: 2rem; color: var(--accent);
-    font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.1em;
+    text-align: center;
+    padding: 2rem;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
   }
 
-  /* ── MOBILE FAB + DRAWER ── */
-  .fab {
-    display: none;
-    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-    background: var(--accent); color: var(--bg); border: none;
-    font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem;
-    letter-spacing: 0.12em; padding: 12px 24px; border-radius: 30px;
-    cursor: pointer; z-index: 150; box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    gap: 7px; align-items: center; white-space: nowrap;
-  }
-
-  .drawer-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-    z-index: 155; opacity: 0; pointer-events: none; transition: opacity 0.3s;
-  }
-  .drawer-overlay.open { opacity: 1; pointer-events: all; }
-
-  .drawer {
-    position: fixed; bottom: -100%; left: 0; right: 0;
-    background: var(--surface); border-top: 1px solid var(--border);
-    z-index: 160; border-radius: 12px 12px 0 0;
-    padding: 1.25rem 1.25rem 2.5rem;
-    transition: bottom 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    max-height: 80vh; overflow-y: auto;
-  }
-  .drawer.open { bottom: 0; }
-
-  .drawer-handle {
-    width: 36px; height: 3px; background: var(--border);
-    border-radius: 2px; margin: 0 auto 1.25rem;
-  }
-
-  .drawer-section { margin-bottom: 1.25rem; }
-
-  .drawer-section-title {
-    font-family: 'DM Mono', monospace; font-size: 0.6rem;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--text-faint); margin-bottom: 0.65rem;
-  }
-
-  .drawer-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-  .btn-apply {
-    width: 100%; margin-top: 0.5rem; background: var(--accent); color: var(--bg);
-    border: none; font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem;
-    letter-spacing: 0.12em; padding: 0.85rem; border-radius: 4px; cursor: pointer;
-  }
-
-  /* ── RESPONSIVE ── */
+  /* &#9472;&#9472; RESPONSIVE &#9472;&#9472; */
   @media (max-width: 768px) {
-    .header-inner { height: auto; padding: 0.75rem 0; }
+    .header-inner {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 0.75rem 0;
+      gap: 0.75rem;
+    }
     .logo img { height: 60px; }
+    .header-search { order: 3; width: 100%; }
     .header-actions { margin-left: auto; }
 
-    .hero-text { padding: 1.25rem 1rem 1rem; }
-    .hero-text h1 { font-size: 2.2rem; }
-    .hero-meta { font-size: 0.6rem; }
+    .hero { padding: 1.5rem 1rem 1.25rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero-meta { font-size: 0.65rem; margin-bottom: 1.25rem; }
 
-    .showreels { grid-template-columns: 1fr 1fr; }
+    .filters {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .filter-divider { display: none; }
 
-    .filter-bar { display: none; }
-    .fab { display: flex; }
+    #locationFilters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+      max-width: calc(100vw - 2rem);
+    }
+    #locationFilters::-webkit-scrollbar { display: none; }
+    #locationFilters .filter-chip { flex-shrink: 0; }
 
-    .results-bar { padding: 0.6rem 1rem; }
-    .clips-outer { padding: 0 0 5rem; }
+    .results-bar { padding: 0.75rem 1rem; }
+    .clips-container { padding: 0 0 3rem; }
 
-    .clip-row { display: flex; flex-direction: column; }
-    .clip-thumb { width: 100%; aspect-ratio: 16/9; }
-    .clip-info { padding: 0.75rem 0.875rem; gap: 0.4rem; }
-    .clip-title { font-size: 0.88rem; }
-    .clip-desc { -webkit-line-clamp: 3; font-size: 0.76rem; }
+    .clip-row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .clip-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+
+    .clip-info { padding: 0.875rem 1rem; gap: 0.5rem; }
+    .clip-title { font-size: 0.9rem; }
+    .clip-desc { -webkit-line-clamp: 3; font-size: 0.78rem; }
+    .clip-meta-row { gap: 0.35rem; }
+    .meta-pill { font-size: 0.55rem; padding: 0.15rem 0.4rem; }
     .clip-actions { display: none; }
-
-    .clips-container.grid-view { grid-template-columns: repeat(2, 1fr); }
-    .clips-container.grid-view .clip-actions { display: none; }
 
     .modal-overlay { padding: 0; align-items: flex-end; }
     .modal { border-radius: 8px 8px 0 0; max-height: 92vh; }
@@ -1078,20 +1079,92 @@
 
     footer { padding: 1.5rem 1rem; }
     .footer-links { gap: 1rem; }
-
-    .reel-modal { padding: 1rem; }
-    .reel-title { font-size: 13px; }
   }
 
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.6rem; }
+    .clip-title { font-size: 0.85rem; }
+  }
+
+  /* &#9472;&#9472; SHOWREELS &#9472;&#9472; */
+  .showreels { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); max-height: 280px; overflow: hidden; }
+  .reel-card { position: relative; overflow: hidden; cursor: pointer; border-right: 1px solid var(--border); }
+  .reel-card:last-child { border-right: none; }
+  .reel-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
+  .reel-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.6; transition: opacity 0.35s, transform 0.5s; }
+  .reel-card:hover .reel-thumb img { opacity: 0.85; transform: scale(1.04); }
+  .reel-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 60%); pointer-events: none; }
+  .reel-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; z-index: 2; }
+  .reel-label { display: flex; flex-direction: column; gap: 2px; }
+  .reel-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(200,169,110,0.75); }
+  .reel-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(14px, 1.8vw, 20px); letter-spacing: 0.06em; color: #fff; line-height: 1; }
+  .reel-dur { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+  .reel-play { width: 36px; height: 36px; border: 1.5px solid rgba(255,255,255,0.45); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); color: #fff; flex-shrink: 0; transform: scale(0.88); transition: transform 0.2s, background 0.2s, border-color 0.2s; }
+  .reel-card:hover .reel-play { transform: scale(1); background: rgba(200,169,110,0.3); border-color: var(--accent); }
+
+  /* &#9472;&#9472; FILTER BAR &#9472;&#9472; */
+  .filter-bar { position: sticky; top: 170px; z-index: 90; background: rgba(17,17,17,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .filter-bar-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+  .fb-search-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+  .fb-search-inner { position: relative; flex: 1; }
+  .fb-search-inner input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 3px; padding: 0.5rem 1rem 0.5rem 2.4rem; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 300; outline: none; transition: border-color 0.2s; }
+  .fb-search-inner input:focus { border-color: var(--accent); }
+  .fb-search-inner input::placeholder { color: var(--text-faint); }
+  .fb-filter-row { display: flex; align-items: center; gap: 0.35rem; overflow-x: auto; scrollbar-width: none; min-height: 42px; flex-wrap: nowrap; }
+  .fb-filter-row::-webkit-scrollbar { display: none; }
+  .fb-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; margin: 0 0.4rem; }
+  .fb-pills { display: flex; gap: 0.3rem; flex-wrap: nowrap; }
+  .view-toggle { display: flex; gap: 2px; flex-shrink: 0; }
+  .view-btn { background: transparent; border: 1px solid var(--border); color: var(--text-faint); padding: 5px 7px; border-radius: 2px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+  .view-btn.active { border-color: var(--accent); color: var(--accent); }
+
+  /* &#9472;&#9472; GRID VIEW &#9472;&#9472; */
+  .clips-container.grid-view { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 2px; padding-top: 2px; }
+  .clips-container.grid-view .clip-row { display: flex; flex-direction: column; border-bottom: none; background: var(--surface); }
+  .clips-container.grid-view .clip-thumb { width: 100%; }
+  .clips-container.grid-view .clip-info { padding: 0.65rem 0.75rem 0.5rem; flex: 1; }
+  .clips-container.grid-view .clip-title { font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .clips-container.grid-view .clip-desc { display: none; }
+  .clips-container.grid-view .clip-actions { padding: 0 0.75rem 0.75rem; flex-direction: row; align-items: center; opacity: 0; transition: opacity 0.2s; }
+  .clips-container.grid-view .clip-row:hover .clip-actions { opacity: 1; }
+  .clips-container.grid-view .vimeo-link { display: none; }
+
+  /* &#9472;&#9472; REEL MODAL &#9472;&#9472; */
+  .reel-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 1100; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+  .reel-modal.active { opacity: 1; pointer-events: all; }
+  .reel-modal-inner { width: 100%; max-width: 900px; }
+  .reel-modal-header { display: flex; align-items: flex-start; justify-content: space-between; padding-bottom: 12px; gap: 1rem; }
+  .reel-modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--text); }
+  .reel-modal-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-faint); text-transform: uppercase; margin-top: 3px; }
+  .reel-modal-close { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.15s; flex-shrink: 0; }
+  .reel-modal-close:hover { background: rgba(255,255,255,0.2); }
+  .reel-modal-frame { position: relative; aspect-ratio: 16/9; background: #000; border-radius: 3px; overflow: hidden; }
+  .reel-modal-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+  /* &#9472;&#9472; MOBILE FAB / DRAWER &#9472;&#9472; */
+  .fab { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--bg); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.12em; padding: 12px 24px; border-radius: 30px; cursor: pointer; z-index: 150; box-shadow: 0 4px 20px rgba(0,0,0,0.6); white-space: nowrap; }
+  .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 155; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .drawer-overlay.open { opacity: 1; pointer-events: all; }
+  .drawer { position: fixed; bottom: -100%; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); z-index: 160; border-radius: 12px 12px 0 0; padding: 1.25rem 1.25rem 2.5rem; transition: bottom 0.35s cubic-bezier(0.16,1,0.3,1); max-height: 80vh; overflow-y: auto; }
+  .drawer.open { bottom: 0; }
+  .drawer-handle { width: 36px; height: 3px; background: var(--border); border-radius: 2px; margin: 0 auto 1.25rem; }
+  .drawer-section { margin-bottom: 1.25rem; }
+  .drawer-section-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.65rem; }
+  .drawer-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .btn-apply { width: 100%; margin-top: 0.5rem; background: var(--accent); color: var(--bg); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; letter-spacing: 0.12em; padding: 0.85rem; border-radius: 4px; cursor: pointer; }
+
+  /* &#9472;&#9472; RESPONSIVE UPDATES &#9472;&#9472; */
+  @media (max-width: 768px) {
+    .header-inner { height: auto; padding: 0.75rem 0; }
+    .logo img { height: 60px !important; }
+    .filter-bar { display: none; }
+    .fab { display: block; }
+    .showreels { max-height: none; }
+  }
   @media (max-width: 420px) {
     .showreels { grid-template-columns: 1fr; }
     .reel-card { border-right: none !important; border-bottom: 1px solid var(--border); }
     .reel-card:last-child { border-bottom: none; }
-    .clips-container.grid-view { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 380px) {
-    .hero-text h1 { font-size: 1.8rem; }
   }
 </style>
 </head>
@@ -1101,7 +1174,7 @@
 <header>
   <div class="header-inner">
     <div class="logo">
-      <img src="highly visual white.png" alt="Highly Visual">
+      <img src="highly visual white.png" alt="Highly Visual" style="height:160px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));">
     </div>
     <div class="header-actions">
       <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
@@ -1117,117 +1190,95 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-text">
-    <div class="hero-text-inner">
-      <h1>STOCK <span>FOOTAGE</span> ARCHIVE</h1>
-      <div class="hero-meta" id="heroMeta">Loading archive…</div>
-    </div>
+  <div class="hero-inner">
+    <h1>STOCK <span>FOOTAGE</span> ARCHIVE</h1>
+    <div class="hero-meta" id="heroMeta">Loading archive&#8230;</div>
   </div>
-
-  <!-- SHOWREELS -->
   <div class="showreels">
-    <div class="reel-card" onclick="openReel('1012359827','Aerial Archive Teaser','1:07','Drone &amp; Aerial Footage')">
+    <div class="reel-card" onclick="openReel('1012359827','Aerial Archive Teaser','1:07','Drone &amp; Aerial')">
       <div class="reel-thumb">
-        <img src="https://i.vimeocdn.com/video/1930112798-15ce7a70c6d17045c0a70043c68712b0f396877fefb4275f8ee3cdfbab74d787-d_1280x720?region=us" alt="Aerial Stock Teaser" loading="lazy">
+        <img src="https://i.vimeocdn.com/video/1930112798-15ce7a70c6d17045c0a70043c68712b0f396877fefb4275f8ee3cdfbab74d787-d_1280x720?region=us" alt="Aerial Stock Teaser" loading="lazy" referrerpolicy="no-referrer">
         <div class="reel-overlay">
           <div class="reel-label">
             <div class="reel-eyebrow">Showreel</div>
             <div class="reel-title">AERIAL ARCHIVE</div>
-            <div class="reel-dur">1:07 · Drone &amp; Aerial</div>
+            <div class="reel-dur">1:07 &middot; Drone &amp; Aerial</div>
           </div>
-          <div class="reel-play">
-            <svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg>
-          </div>
+          <div class="reel-play"><svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg></div>
         </div>
       </div>
     </div>
     <div class="reel-card" onclick="openReel('795492631','Long Lens Wildlife Teaser','1:13','Telephoto &amp; Long Lens')">
       <div class="reel-thumb">
-        <img src="https://i.vimeocdn.com/video/1602266963-445514cb87ddfb82f39750b77d1323a9accbf78558fc8423ed6cb5fa71131331-d_1280x720?region=us" alt="Long Lens Archive Teaser" loading="lazy">
+        <img src="https://i.vimeocdn.com/video/1602266963-445514cb87ddfb82f39750b77d1323a9accbf78558fc8423ed6cb5fa71131331-d_1280x720?region=us" alt="Long Lens Archive Teaser" loading="lazy" referrerpolicy="no-referrer">
         <div class="reel-overlay">
           <div class="reel-label">
             <div class="reel-eyebrow">Showreel</div>
             <div class="reel-title">LONG LENS WILDLIFE</div>
-            <div class="reel-dur">1:13 · Telephoto &amp; Long Lens</div>
+            <div class="reel-dur">1:13 &middot; Telephoto &amp; Long Lens</div>
           </div>
-          <div class="reel-play">
-            <svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg>
-          </div>
+          <div class="reel-play"><svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FILTER PANEL (desktop) -->
+<!-- FILTER BAR -->
 <div class="filter-bar">
   <div class="filter-bar-inner">
-
-    <!-- Search row -->
     <div class="fb-search-row">
-      <div class="header-search-inner">
-        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type…" autocomplete="off">
+      <div class="fb-search-inner">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type&#8230;" autocomplete="off">
       </div>
       <button class="search-btn" onclick="executeSearch()">SEARCH</button>
       <div class="view-toggle">
-        <button class="view-btn" id="viewList" onclick="setView('list')" title="List view">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
-        <button class="view-btn active" id="viewGrid" onclick="setView('grid')" title="Grid view">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        </button>
+        <button class="view-btn" id="viewList" onclick="setView('list')" title="List view"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <button class="view-btn active" id="viewGrid" onclick="setView('grid')" title="Grid view"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
       </div>
     </div>
-
-    <!-- Subject + Location + Sort row -->
     <div class="fb-filter-row">
-      <div class="fb-section">
-        <span class="fb-label">Subject</span>
-        <div class="fb-pills">
-          <button class="filter-chip active" data-filter="subject" data-value="all" onclick="setSubjectChip('all',this)">All</button>
-          <button class="filter-chip" data-filter="subject" data-value="wildlife" onclick="setSubjectChip('wildlife',this)">Wildlife</button>
-          <button class="filter-chip" data-filter="subject" data-value="aerial" onclick="setSubjectChip('aerial',this)">Aerial</button>
-          <button class="filter-chip" data-filter="subject" data-value="longlens" onclick="setSubjectChip('longlens',this)">Long Lens</button>
-          <button class="filter-chip" data-filter="subject" data-value="landscape" onclick="setSubjectChip('landscape',this)">Landscape</button>
-          <button class="filter-chip" data-filter="subject" data-value="coast" onclick="setSubjectChip('coast',this)">Coast &amp; Marine</button>
-          <button class="filter-chip" data-filter="subject" data-value="nairobi" onclick="setSubjectChip('nairobi',this)">Nairobi</button>
-        </div>
+      <span class="fb-label">Subject</span>
+      <button class="filter-chip active" data-filter="subject" data-value="all" onclick="setSubjectChip('all',this)">All</button>
+      <button class="filter-chip" data-filter="subject" data-value="wildlife" onclick="setSubjectChip('wildlife',this)">Wildlife</button>
+      <button class="filter-chip" data-filter="subject" data-value="aerial" onclick="setSubjectChip('aerial',this)">Aerial</button>
+      <button class="filter-chip" data-filter="subject" data-value="longlens" onclick="setSubjectChip('longlens',this)">Long Lens</button>
+      <button class="filter-chip" data-filter="subject" data-value="landscape" onclick="setSubjectChip('landscape',this)">Landscape</button>
+      <button class="filter-chip" data-filter="subject" data-value="coast" onclick="setSubjectChip('coast',this)">Coast &amp; Marine</button>
+      <button class="filter-chip" data-filter="subject" data-value="nairobi" onclick="setSubjectChip('nairobi',this)">Nairobi</button>
+      <div class="fb-divider"></div>
+      <span class="fb-label">Location</span>
+      <div class="fb-pills" id="locationFilters">
+        <button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>
+        <button class="filter-chip" data-filter="location" data-value="Tsavo" onclick="setFilter('location','Tsavo',this)">Tsavo</button>
+        <button class="filter-chip" data-filter="location" data-value="Samburu" onclick="setFilter('location','Samburu',this)">Samburu &amp; North</button>
+        <button class="filter-chip" data-filter="location" data-value="Mara" onclick="setFilter('location','Mara',this)">Maasai Mara</button>
+        <button class="filter-chip" data-filter="location" data-value="Lakes" onclick="setFilter('location','Lakes',this)">Lakes</button>
+        <button class="filter-chip" data-filter="location" data-value="Amboseli" onclick="setFilter('location','Amboseli',this)">Amboseli</button>
+        <button class="filter-chip" data-filter="location" data-value="Coast" onclick="setFilter('location','Coast',this)">Coast</button>
+        <button class="filter-chip" data-filter="location" data-value="Nairobi" onclick="setFilter('location','Nairobi',this)">Nairobi</button>
       </div>
       <div class="fb-divider"></div>
-      <div class="fb-section">
-        <span class="fb-label">Location</span>
-        <div class="fb-pills" id="locationFilters">
-          <button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>
-        </div>
-      </div>
-      <div class="fb-divider"></div>
-      <div class="fb-section fb-section--noshrink">
-        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
-          <option value="default">Sort: Default</option>
-          <option value="newest">Newest First</option>
-          <option value="oldest">Oldest First</option>
-          <option value="az">Title A–Z</option>
-        </select>
-      </div>
+      <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+        <option value="default">Sort: Default</option>
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="az">Title A&#8211;Z</option>
+      </select>
     </div>
-
   </div>
 </div>
 
 <!-- RESULTS BAR -->
 <div class="results-bar">
-  <div class="results-count"><span id="resultCount">—</span> CLIPS</div>
+  <div class="results-count"><span id="resultCount">&#8212;</span> CLIPS</div>
   <button class="clear-filters" onclick="clearAllFilters()">Clear Filters</button>
 </div>
 
 <!-- CLIP LIST -->
-<div class="clips-outer">
-  <div class="clips-container grid-view" id="clipsContainer">
-    <div class="loading">Loading archive…</div>
-  </div>
+<div class="clips-container grid-view" id="clipsContainer">
+  <div class="loading">Loading archive&#8230;</div>
 </div>
 
 <!-- PAGINATION -->
@@ -1243,30 +1294,70 @@
       <a href="https://www.instagram.com/highlyvisualke/" target="_blank">Instagram</a>
       <a href="https://wa.me/254701397911" target="_blank">WhatsApp</a>
     </div>
-    <div class="footer-copy">© 2026 Highly Visual · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b0b7bfb699b1b0beb1b5a0afb0aaacb8b5f7bab6b4">[email&#160;protected]</a> · All footage 4K or higher · Licensed drone operator</div>
+    <div class="footer-copy">&#169; 2026 Highly Visual &#183; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7ded9d1d8f7dfded0dfdbcec1dec4c2d6db99d4d8da">[email&#160;protected]</a> &#183; All footage 4K or higher &#183; Licensed drone operator</div>
   </div>
 </footer>
 
-<!-- VIMEO REEL MODAL -->
-<div class="reel-modal" id="reelModal" onclick="closeReelModal(event)">
+<!-- REEL MODAL -->
+<div class="reel-modal" id="reelModal" onclick="if(event.target===this)closeReelModalBtn()">
   <div class="reel-modal-inner">
     <div class="reel-modal-header">
       <div>
         <div class="reel-modal-title" id="reelModalTitle"></div>
         <div class="reel-modal-sub" id="reelModalSub"></div>
       </div>
-      <button class="reel-modal-close" onclick="closeReelModalBtn()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <button class="reel-modal-close" onclick="closeReelModalBtn()">&#x2715;</button>
     </div>
     <div class="reel-modal-frame" id="reelModalFrame"></div>
   </div>
 </div>
 
+<!-- MOBILE FAB -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<button class="fab" id="fab" onclick="openDrawer()">&#9776; FILTER &amp; SORT</button>
+<div class="drawer" id="drawer">
+  <div class="drawer-handle"></div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Subject</div>
+    <div class="drawer-pills">
+      <button class="filter-chip active" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('all',null)">All</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('wildlife',null)">Wildlife</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('aerial',null)">Aerial</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('longlens',null)">Long Lens</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('landscape',null)">Landscape</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('coast',null)">Coast</button>
+      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('nairobi',null)">Nairobi</button>
+    </div>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Location</div>
+    <div class="drawer-pills">
+      <button class="filter-chip active" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','all',null)">All</button>
+      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Tsavo',null)">Tsavo</button>
+      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Samburu',null)">Samburu &amp; North</button>
+      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Mara',null)">Maasai Mara</button>
+      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Lakes',null)">Lakes</button>
+      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Amboseli',null)">Amboseli</button>
+      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Coast',null)">Coast</button>
+      <button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','Nairobi',null)">Nairobi</button>
+    </div>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Sort</div>
+    <div class="drawer-pills">
+      <button class="filter-chip active" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='default';applyFilters()">Default</button>
+      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='newest';applyFilters()">Newest First</button>
+      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='oldest';applyFilters()">Oldest First</button>
+      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='az';applyFilters()">Title A&#8211;Z</button>
+    </div>
+  </div>
+  <button class="btn-apply" onclick="closeDrawer()">APPLY FILTERS</button>
+</div>
+
 <!-- VIDEO MODAL -->
 <div class="modal-overlay" id="videoModal" onclick="closeModal(event)">
   <div class="modal" id="modalContent">
-    <button class="modal-close" onclick="closeVideoModal()">✕</button>
+    <button class="modal-close" onclick="closeVideoModal()">&#10005;</button>
     <div class="modal-video" id="modalVideo"></div>
     <div class="modal-body">
       <div class="clip-meta-row" id="modalMeta"></div>
@@ -1284,7 +1375,7 @@
 <div class="lightbox-panel" id="lightboxPanel">
   <div class="lightbox-header">
     <h2>LIGHTBOX</h2>
-    <button class="close-panel" onclick="toggleLightbox()">✕</button>
+    <button class="close-panel" onclick="toggleLightbox()">&#10005;</button>
   </div>
   <div class="lightbox-items" id="lightboxItems">
     <div class="lightbox-empty">
@@ -1326,75 +1417,30 @@
         <input type="text" name="company">
       </div>
       <div class="form-group">
-        <label>Intended Use *</label>
-        <select name="intended_use" required>
-          <option value="" disabled selected>Select use type…</option>
-          <option>Broadcast / TV</option>
-          <option>Documentary / Film</option>
-          <option>Online / Social Media</option>
-          <option>Commercial / Advertising</option>
-          <option>Corporate / Internal</option>
-          <option>Editorial / Press</option>
-          <option>Other</option>
-        </select>
+        <label>Intended Use</label>
+        <input type="text" name="intended_use" placeholder="e.g. BBC documentary, commercial, social media">
       </div>
       <div class="form-group">
         <label>Message</label>
-        <textarea name="message" placeholder="Any additional details about your project or requirements…"></textarea>
+        <textarea name="message" placeholder="Any additional details about your project or requirements&#8230;"></textarea>
       </div>
       <input type="hidden" name="selected_clips" id="selectedClipsInput">
-      <input type="hidden" name="_subject" value="New Footage Lightbox Enquiry — Highly Visual">
+      <input type="hidden" name="_subject" value="New Footage Lightbox Enquiry &#8212; Highly Visual">
       <div class="form-actions">
         <button type="button" class="btn-cancel" onclick="closeEnquiry()">Cancel</button>
         <button type="submit" class="btn-submit">SEND ENQUIRY</button>
       </div>
     </form>
     <div id="enquirySuccess" style="display:none" class="success-msg">
-      <p>✓ Enquiry sent — we'll be in touch shortly.</p>
+      <p>&#10003; Enquiry sent &#8212; we'll be in touch shortly.</p>
       <br>
       <button class="btn-cancel" onclick="closeEnquiry()">Close</button>
     </div>
   </div>
 </div>
 
-<!-- MOBILE FILTER FAB + DRAWER -->
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-<button class="fab" id="fab" onclick="openDrawer()">
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
-  FILTER &amp; SORT
-</button>
-<div class="drawer" id="drawer">
-  <div class="drawer-handle"></div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Subject</div>
-    <div class="drawer-pills" id="drawerSubjectPills">
-      <button class="filter-chip active" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('all',document.querySelector('[data-filter=subject][data-value=all]'))">All</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('wildlife',document.querySelector('[data-filter=subject][data-value=wildlife]'))">Wildlife</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('aerial',document.querySelector('[data-filter=subject][data-value=aerial]'))">Aerial</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('longlens',document.querySelector('[data-filter=subject][data-value=longlens]'))">Long Lens</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('landscape',document.querySelector('[data-filter=subject][data-value=landscape]'))">Landscape</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('coast',document.querySelector('[data-filter=subject][data-value=coast]'))">Coast</button>
-      <button class="filter-chip" data-group="ds" onclick="drawerPill(this,'ds');setSubjectChip('nairobi',document.querySelector('[data-filter=subject][data-value=nairobi]'))">Nairobi</button>
-    </div>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Location</div>
-    <div class="drawer-pills" id="drawerLocationPills"></div>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Sort</div>
-    <div class="drawer-pills">
-      <button class="filter-chip active" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='default';applyFilters()">Default</button>
-      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='newest';applyFilters()">Newest First</button>
-      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='oldest';applyFilters()">Oldest First</button>
-      <button class="filter-chip" data-group="dsort" onclick="drawerPill(this,'dsort');document.getElementById('sortSelect').value='az';applyFilters()">Title A–Z</button>
-    </div>
-  </div>
-  <button class="btn-apply" onclick="closeDrawer()">APPLY FILTERS</button>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── STATE ──
+<script>
+// &#9472;&#9472; STATE &#9472;&#9472;
 let allFootage  = [];
 let filtered    = [];
 let lightbox    = [];
@@ -1404,47 +1450,42 @@ const PER_PAGE  = 30;
 
 const state = {
   search:   '',
-  location: 'all',   // group label e.g. 'Tsavo' or 'all'
+  location: 'all',
   subject:  'all',
   sort:     'default',
 };
 
-// Location groups — raw JSON locations → display group
+// Location groups
 const LOCATION_GROUPS = {
-  'Tsavo':           ['Tsavo East','Tsavo West','Rukinga Ranch'],
-  'Samburu & North': ['Samburu','Shaba / Samburu Hills','Namunyak / Reteti','Reteti Elephant Sanctuary','Ol Jogi'],
-  'Maasai Mara':     ['Maasai Mara','Maasai Mara / Migration','Shompole'],
-  'Lakes':           ['Lake Bogoria','Lake Naivasha','Lake Magadi'],
-  'Amboseli':        ['Amboseli'],
-  'Coast':           ['Watamu','Mombasa','Lamu / Coast'],
-  'Nairobi':         ['Nairobi','Nairobi National Park','Mount Kenya'],
+  'Tsavo':    ['Tsavo East','Tsavo West','Rukinga Ranch'],
+  'Samburu':  ['Samburu','Shaba / Samburu Hills','Namunyak / Reteti','Reteti Elephant Sanctuary','Ol Jogi'],
+  'Mara':     ['Maasai Mara','Maasai Mara / Migration','Shompole'],
+  'Lakes':    ['Lake Bogoria','Lake Naivasha','Lake Magadi'],
+  'Amboseli': ['Amboseli'],
+  'Coast':    ['Watamu','Mombasa','Lamu / Coast'],
+  'Nairobi':  ['Nairobi','Nairobi National Park','Mount Kenya'],
 };
 
-// Subject filters — precise, camera-aware
+// Subject filters
 const SUBJECT_FILTERS = {
-  aerial: clip => {
-    const drones = ['Mavic 3 Cine','Mavic 2 Pro','Mavic 3 Pro Cine','Inspire 2 / X5S','Inspire 3','Inspire 1 / X3'];
-    return drones.includes(clip.camera);
+  aerial:    c => ['Mavic 3 Cine','Mavic 2 Pro','Mavic 3 Pro Cine','Inspire 2 / X5S','Inspire 3','Inspire 1 / X3'].includes(c.camera),
+  longlens:  c => ['Sony FX6','Sony FX6 RAW'].includes(c.camera),
+  wildlife:  c => {
+    const a = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wild dog','wildebeest','gazelle','impala','oryx','hartebeest','ostrich','heron','kingfisher'];
+    const h = (c.tags||[]).join(' ').toLowerCase();
+    return a.some(t => h.includes(t));
   },
-  longlens: clip => {
-    return ['Sony FX6','Sony FX6 RAW'].includes(clip.camera);
+  landscape: c => {
+    const a = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wildebeest','gazelle','impala','oryx'];
+    const l = ['no animals','uninhabited','landscape','scenery','terrain','sunset','sunrise','no people'];
+    const h = (c.tags||[]).join(' ').toLowerCase();
+    return l.some(t => h.includes(t)) && !a.some(t => h.includes(t));
   },
-  wildlife: clip => {
-    const animals = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','pelican','eagle','vulture','monkey','baboon','hyena','wild dog','caracal','serval','eland','wildebeest','gazelle','impala','oryx','gerenuk','hirola','hartebeest','ostrich','heron','kingfisher','bee-eater','mongoose','sandgrouse'];
-    const h = [...(clip.tags||[])].join(' ').toLowerCase();
-    return animals.some(a => h.includes(a));
-  },
-  landscape: clip => {
-    const animals = ['lion','leopard','cheetah','elephant','giraffe','zebra','buffalo','rhino','hippo','crocodile','flamingo','eagle','vulture','monkey','baboon','hyena','wildebeest','gazelle','impala','oryx','hirola'];
-    const landTags = ['no animals','uninhabited','landscape','scenery','terrain','sunset','sunrise','sky','horizon','mountain','forest','no people'];
-    const h = [...(clip.tags||[])].join(' ').toLowerCase();
-    return landTags.some(t => h.includes(t)) && !animals.some(a => h.includes(a));
-  },
-  coast: clip => ['Watamu','Mombasa','Lamu / Coast'].includes(clip.location),
-  nairobi: clip => ['Nairobi','Nairobi National Park','Mount Kenya'].includes(clip.location),
+  coast:   c => ['Watamu','Mombasa','Lamu / Coast'].includes(c.location),
+  nairobi: c => ['Nairobi','Nairobi National Park','Mount Kenya'].includes(c.location),
 };
 
-// ── LOAD DATA ──
+// &#9472;&#9472; LOAD DATA &#9472;&#9472;
 async function loadData() {
   const clipsEl = document.getElementById('clipsContainer');
   try {
@@ -1458,15 +1499,14 @@ async function loadData() {
     }
     throw new Error('Empty data');
   } catch(e) {
-    clipsEl.innerHTML = '<div class="loading">Could not load footage.json — ' +
+    clipsEl.innerHTML = '<div class="loading">Could not load footage.json &#8212; ' +
       '<a href="footage.json" style="color:var(--accent)">click here to test</a></div>';
   }
 }
 
 function init() {
-  buildLocationFilters();
   document.getElementById('heroMeta').textContent =
-    `${allFootage.length.toLocaleString()} clips · East Africa · 4K & higher`;
+    `${allFootage.length.toLocaleString()} clips &#183; East Africa &#183; 4K & higher`;
 
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', e => {
@@ -1483,12 +1523,6 @@ function init() {
   });
 
   applyFilters();
-  checkMobile();
-  window.addEventListener('resize', checkMobile);
-}
-
-function checkMobile() {
-  document.getElementById('fab').style.display = window.innerWidth <= 768 ? 'flex' : 'none';
 }
 
 function executeSearch() {
@@ -1497,49 +1531,26 @@ function executeSearch() {
   applyFilters();
 }
 
-// ── LOCATION FILTERS ──
-function buildLocationFilters() {
-  const container = document.getElementById('locationFilters');
-  const drawerContainer = document.getElementById('drawerLocationPills');
 
-  container.innerHTML = `<button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>`;
-  drawerContainer.innerHTML = `<button class="filter-chip active" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','all',document.querySelector('#locationFilters [data-value=all]'))">All</button>`;
-
-  Object.keys(LOCATION_GROUPS).forEach(group => {
-    container.innerHTML += `<button class="filter-chip" data-filter="location" data-value="${group}" onclick="setFilter('location','${group}',this)">${group}</button>`;
-    drawerContainer.innerHTML += `<button class="filter-chip" data-group="dloc" onclick="drawerPill(this,'dloc');setFilter('location','${group}',document.querySelector('#locationFilters [data-value=\\'${group}\\']'))">${group}</button>`;
-  });
-}
-
-// ── VIEW TOGGLE ──
+// &#9472;&#9472; VIEW TOGGLE &#9472;&#9472;
 let currentView = 'grid';
 function setView(v) {
   currentView = v;
-  const container = document.getElementById('clipsContainer');
-  if (v === 'grid') {
-    container.classList.add('grid-view');
-    document.getElementById('viewGrid').classList.add('active');
-    document.getElementById('viewList').classList.remove('active');
-  } else {
-    container.classList.remove('grid-view');
-    document.getElementById('viewList').classList.add('active');
-    document.getElementById('viewGrid').classList.remove('active');
-  }
+  document.getElementById('clipsContainer').classList.toggle('grid-view', v === 'grid');
+  document.getElementById('viewGrid').classList.toggle('active', v === 'grid');
+  document.getElementById('viewList').classList.toggle('active', v === 'list');
 }
 
-// ── SUBJECT FILTER ──
-function setSubjectChip(subj, el) {
-  state.subject = subj;
-  document.querySelectorAll('[data-filter="subject"]').forEach(b => b.classList.toggle('active', b.dataset.value === subj));
-  currentPage = 1;
-  applyFilters();
+// &#9472;&#9472; LOCATION FILTERS &#9472;&#9472;
+function buildLocationFilters() {
+  // Location buttons are hardcoded in HTML
 }
 
-// ── FILTERS ──
+// &#9472;&#9472; FILTERS &#9472;&#9472;
 function setFilter(type, value, el) {
   state[type] = value;
-  document.querySelectorAll(`#locationFilters [data-filter="${type}"]`).forEach(b => b.classList.remove('active'));
-  if (el) el.classList.add('active');
+  document.querySelectorAll(`[data-filter="${type}"]`).forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
   currentPage = 1;
   applyFilters();
 }
@@ -1548,19 +1559,14 @@ function applyFilters() {
   state.sort = document.getElementById('sortSelect').value;
 
   filtered = allFootage.filter(clip => {
-    // Location group filter
     if (state.location !== 'all') {
-      const groupLocs = LOCATION_GROUPS[state.location] || [];
-      if (!groupLocs.includes(clip.location)) return false;
+      const grp = LOCATION_GROUPS[state.location] || [];
+      if (!grp.includes(clip.location)) return false;
     }
-
-    // Subject filter
     if (state.subject !== 'all') {
       const fn = SUBJECT_FILTERS[state.subject];
       if (fn && !fn(clip)) return false;
     }
-
-    // Text search
     if (state.search) {
       const haystack = [clip.title, clip.description, clip.location,
         clip.camera, clip.filename, ...(clip.tags || [])].join(' ').toLowerCase();
@@ -1584,18 +1590,14 @@ function clearAllFilters() {
   state.location = 'all';
   state.subject = 'all';
   document.getElementById('searchInput').value = '';
-  document.querySelectorAll('[data-filter="location"]').forEach(b => {
-    b.classList.toggle('active', b.dataset.value === 'all');
-  });
-  document.querySelectorAll('[data-filter="subject"]').forEach(b => {
-    b.classList.toggle('active', b.dataset.value === 'all');
-  });
+  document.querySelectorAll('[data-filter="location"]').forEach(b => b.classList.toggle('active', b.dataset.value === 'all'));
+  document.querySelectorAll('[data-filter="subject"]').forEach(b => b.classList.toggle('active', b.dataset.value === 'all'));
   document.getElementById('sortSelect').value = 'default';
   currentPage = 1;
   applyFilters();
 }
 
-// ── RENDER ──
+// &#9472;&#9472; RENDER &#9472;&#9472;
 function renderPage() {
   const container = document.getElementById('clipsContainer');
   const start = (currentPage - 1) * PER_PAGE;
@@ -1616,12 +1618,12 @@ function renderPage() {
 function renderClipRow(clip, i) {
   const inLightbox = lightbox.some(l => l.id === clip.id);
   const thumbHtml = clip.thumbnail
-    ? `<img src="${clip.thumbnail}" alt="${escHtml(clip.title)}" loading="lazy">`
+    ? `<img src="${clip.thumbnail}" alt="${escHtml(clip.title)}" loading="lazy" referrerpolicy="no-referrer">`
     : `<div class="thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></div>`;
   const topTags = (clip.tags || []).slice(0, 8);
 
   return `
-    <div class="clip-row" style="animation-delay:${i * 0.02}s" onclick="openClip(${clip.id})">
+    <div class="clip-row" style="animation-delay:${i * 0.03}s" onclick="openClip(${clip.id})">
       <div class="clip-thumb">
         ${thumbHtml}
         <div class="clip-play-overlay">
@@ -1650,24 +1652,24 @@ function renderClipRow(clip, i) {
       <div class="clip-actions" onclick="event.stopPropagation()">
         <button class="add-to-lightbox ${inLightbox ? 'added' : ''}"
           onclick="toggleLightboxItem(getClip(${clip.id}))">
-          ${inLightbox ? '✓ Added' : '+ Lightbox'}
+          ${inLightbox ? '&#10003; Added' : '+ Lightbox'}
         </button>
-        ${clip.vimeo_id ? `<a class="vimeo-link" href="https://vimeo.com/${clip.vimeo_id}" target="_blank" onclick="event.stopPropagation()">View on Vimeo →</a>` : ''}
+        ${clip.vimeo_id ? `<a class="vimeo-link" href="https://vimeo.com/${clip.vimeo_id}" target="_blank" onclick="event.stopPropagation()">View on Vimeo &#8594;</a>` : ''}
       </div>
     </div>`;
 }
 
-// ── PAGINATION ──
+// &#9472;&#9472; PAGINATION &#9472;&#9472;
 function renderPagination() {
   const total = Math.ceil(filtered.length / PER_PAGE);
   const el = document.getElementById('pagination');
   if (total <= 1) { el.innerHTML = ''; return; }
 
-  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>←</button>`;
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>&#8592;</button>`;
   for (let p = Math.max(1, currentPage-2); p <= Math.min(total, currentPage+2); p++) {
     html += `<button class="page-btn ${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
   }
-  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>→</button>`;
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>&#8594;</button>`;
   html += `<span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-faint);letter-spacing:0.1em;margin-left:0.5rem">PAGE ${currentPage} / ${total}</span>`;
   el.innerHTML = html;
 }
@@ -1679,7 +1681,7 @@ function goPage(p) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── CLIP MODAL ──
+// &#9472;&#9472; CLIP MODAL &#9472;&#9472;
 function getClip(id) { return allFootage.find(c => c.id === id); }
 
 function openClip(id) {
@@ -1703,12 +1705,12 @@ function openClip(id) {
   if (clip.vimeo_id) {
     videoEl.innerHTML = `<iframe src="https://player.vimeo.com/video/${clip.vimeo_id}?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
   } else {
-    videoEl.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-faint);font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;">NO PREVIEW</div>`;
+    videoEl.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-faint);font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;">NO VIMEO ID</div>`;
   }
 
   const btn = document.getElementById('modalLightboxBtn');
   const inLightbox = lightbox.some(l => l.id === clip.id);
-  btn.textContent = inLightbox ? '✓ In Lightbox' : '+ Add to Lightbox';
+  btn.textContent = inLightbox ? '&#10003; In Lightbox' : '+ Add to Lightbox';
   btn.className = 'add-to-lightbox' + (inLightbox ? ' added' : '');
 
   document.getElementById('videoModal').classList.add('active');
@@ -1725,27 +1727,22 @@ function closeVideoModal() {
   document.body.style.overflow = '';
 }
 
-// ── REEL MODAL ──
+// &#9472;&#9472; REEL MODAL &#9472;&#9472;
 function openReel(id, title, dur, type) {
   document.getElementById('reelModalTitle').textContent = title;
-  document.getElementById('reelModalSub').textContent = 'Showreel · ' + dur + ' · ' + type;
+  document.getElementById('reelModalSub').textContent = 'Showreel &#183; ' + dur + ' &#183; ' + type;
   document.getElementById('reelModalFrame').innerHTML =
-    `<iframe src="https://player.vimeo.com/video/${id}?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
   document.getElementById('reelModal').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
-
-function closeReelModal(e) {
-  if (e.target === document.getElementById('reelModal')) closeReelModalBtn();
-}
-
 function closeReelModalBtn() {
   document.getElementById('reelModal').classList.remove('active');
   document.getElementById('reelModalFrame').innerHTML = '';
   document.body.style.overflow = '';
 }
 
-// ── LIGHTBOX ──
+// &#9472;&#9472; LIGHTBOX &#9472;&#9472;
 function toggleLightbox() {
   document.getElementById('lightboxPanel').classList.toggle('open');
 }
@@ -1760,7 +1757,7 @@ function toggleLightboxItem(clip) {
   if (currentClip && currentClip.id === clip.id) {
     const btn = document.getElementById('modalLightboxBtn');
     const inLightbox = lightbox.some(l => l.id === clip.id);
-    btn.textContent = inLightbox ? '✓ In Lightbox' : '+ Add to Lightbox';
+    btn.textContent = inLightbox ? '&#10003; In Lightbox' : '+ Add to Lightbox';
     btn.className = 'add-to-lightbox' + (inLightbox ? ' added' : '');
   }
 }
@@ -1789,9 +1786,9 @@ function updateLightboxUI() {
         <div class="lightbox-item-num">${String(i+1).padStart(2,'0')}</div>
         <div class="lightbox-item-info">
           <div class="lightbox-item-title">${escHtml(clip.title)}</div>
-          <div class="lightbox-item-meta">${escHtml(clip.location)}${clip.duration ? ' · ' + clip.duration : ''}</div>
+          <div class="lightbox-item-meta">${escHtml(clip.location)}${clip.duration ? ' &#183; ' + clip.duration : ''}</div>
         </div>
-        <button class="remove-item" onclick="toggleLightboxItem(getClip(${clip.id}))" title="Remove">✕</button>
+        <button class="remove-item" onclick="toggleLightboxItem(getClip(${clip.id}))" title="Remove">&#10005;</button>
       </div>`).join('');
   }
 }
@@ -1802,9 +1799,9 @@ function clearLightbox() {
   renderPage();
 }
 
-// ── ENQUIRY ──
+// &#9472;&#9472; ENQUIRY &#9472;&#9472;
 function openEnquiry() {
-  const clipsText = lightbox.map((c,i) => `${i+1}. ${c.title} (${c.filename}${c.vimeo_id ? ' · vimeo.com/'+c.vimeo_id : ''})`).join('\n');
+  const clipsText = lightbox.map((c,i) => `${i+1}. ${c.title} (${c.filename}${c.vimeo_id ? ' &#183; vimeo.com/'+c.vimeo_id : ''})`).join('\n');
   document.getElementById('enquiryClipList').innerHTML =
     lightbox.map(c => `<p>${escHtml(c.title)}</p>`).join('');
   document.getElementById('selectedClipsInput').value = clipsText;
@@ -1838,12 +1835,12 @@ function submitEnquiry(e) {
   });
 }
 
-// ── TAG SEARCH ──
+// &#9472;&#9472; TAG SEARCH &#9472;&#9472;
 function searchTag(tag) {
   document.getElementById('searchInput').value = tag;
   state.search = tag.toLowerCase();
   state.location = 'all';
-  document.querySelectorAll('[data-filter="location"]').forEach(b => {
+  document.querySelectorAll('.filter-chip').forEach(b => {
     b.classList.toggle('active', b.dataset.value === 'all');
   });
   currentPage = 1;
@@ -1851,30 +1848,41 @@ function searchTag(tag) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── MOBILE DRAWER ──
+// &#9472;&#9472; MOBILE DRAWER &#9472;&#9472;
 function openDrawer() {
   document.getElementById('drawer').classList.add('open');
   document.getElementById('drawerOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function closeDrawer() {
   document.getElementById('drawer').classList.remove('open');
   document.getElementById('drawerOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
-
 function drawerPill(el, group) {
-  document.querySelectorAll(`[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('[data-group="' + group + '"]').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
 
-// ── UTILS ──
+// &#9472;&#9472; UTILS &#9472;&#9472;
 function escHtml(str) {
   if (!str) return '';
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ── KEYBOARD ──
+// &#9472;&#9472; KEYBOARD &#9472;&#9472;
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape
+  if (e.key === 'Escape') {
+    closeVideoModal();
+    closeReelModalBtn();
+    closeEnquiry();
+    document.getElementById('lightboxPanel').classList.remove('open');
+    closeDrawer();
+  }
+});
+
+// &#9472;&#9472; INIT &#9472;&#9472;
+loadData();
+</script>
+</body>
+</html>
