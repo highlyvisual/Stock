@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Highly Visual — Stock Footage Archive</title>
-<link rel="icon" href="/Stock/favicon.1.ico" type="image/x-icon">
+<link rel="icon" href="favicon.1.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -1249,7 +1249,7 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── STATE ──
 let allFootage  = [];
 let filtered    = [];
@@ -1267,28 +1267,20 @@ const state = {
 // ── LOAD DATA ──
 async function loadData() {
   const clipsEl = document.getElementById('clipsContainer');
-  const urls = [
-    'footage.json',
-    './footage.json',
-    '/Stock/footage.json',
-    window.location.origin + '/Stock/footage.json',
-  ];
-
-  for (const url of urls) {
-    try {
-      const resp = await fetch(url);
-      if (!resp.ok) continue;
-      const data = await resp.json();
-      if (data && data.length > 0) {
-        allFootage = data;
-        init();
-        return;
-      }
-    } catch(e) { continue; }
+  try {
+    const resp = await fetch('footage.json');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    if (data && data.length > 0) {
+      allFootage = data;
+      init();
+      return;
+    }
+    throw new Error('Empty data');
+  } catch(e) {
+    clipsEl.innerHTML = '<div class="loading">Could not load footage.json — ' +
+      '<a href="footage.json" style="color:var(--accent)">click here to test</a></div>';
   }
-
-  clipsEl.innerHTML = '<div class="loading">Could not load footage.json — ' +
-    '<a href="footage.json" style="color:var(--accent)">click here to test</a></div>';
 }
 
 function init() {
