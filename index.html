@@ -1143,7 +1143,6 @@
       <button class="filter-chip" data-filter="subject" data-value="longlens" onclick="setSubject('longlens',this)">Long Lens</button>
       <button class="filter-chip" data-filter="subject" data-value="landscape" onclick="setSubject('landscape',this)">Landscape</button>
       <button class="filter-chip" data-filter="subject" data-value="coast" onclick="setSubject('coast',this)">Coast &amp; Marine</button>
-      <button class="filter-chip" data-filter="subject" data-value="nairobi" onclick="setSubject('nairobi',this)">Nairobi</button>
       <div class="fb-divider"></div>
       <span class="fb-label">Location</span>
       <div id="locationFilters" style="display:flex;gap:0.3rem;flex-wrap:nowrap;">
@@ -1298,12 +1297,12 @@ const state = {
 
 const LOCATION_GROUPS = {
   'Tsavo':    ['Tsavo East','Tsavo West','Rukinga Ranch'],
-  'Samburu':  ['Samburu','Shaba / Samburu Hills','Namunyak / Reteti','Reteti Elephant Sanctuary','Ol Jogi'],
+  'Samburu':  ['Samburu','Shaba / Samburu Hills','Namunyak / Reteti','Reteti Elephant Sanctuary','Ol Jogi','Mount Kenya'],
   'Mara':     ['Maasai Mara','Maasai Mara / Migration','Shompole'],
   'Lakes':    ['Lake Bogoria','Lake Naivasha','Lake Magadi'],
   'Amboseli': ['Amboseli'],
   'Coast':    ['Watamu','Mombasa','Lamu / Coast'],
-  'Nairobi':  ['Nairobi','Nairobi National Park','Mount Kenya'],
+  'Nairobi':  ['Nairobi','Nairobi National Park'],
 };
 
 const SUBJECT_FILTERS = {
@@ -1321,7 +1320,6 @@ const SUBJECT_FILTERS = {
     return land.some(t => h.includes(t)) && !animals.some(t => h.includes(t));
   },
   coast:   c => ['Watamu','Mombasa','Lamu / Coast'].includes(c.location),
-  nairobi: c => ['Nairobi','Nairobi National Park','Mount Kenya'].includes(c.location),
 };
 
 // &#9472;&#9472; LOAD DATA &#9472;&#9472;
@@ -1375,6 +1373,13 @@ function executeSearch() {
 function buildLocationFilters() { /* hardcoded in HTML */ }
 
 // &#9472;&#9472; FILTERS &#9472;&#9472;
+function setSubject(subj, el) {
+  state.subject = subj;
+  document.querySelectorAll('[data-filter="subject"]').forEach(b => b.classList.toggle('active', b.dataset.value === subj));
+  currentPage = 1;
+  applyFilters();
+}
+
 function setFilter(type, value, el) {
   state[type] = value;
   document.querySelectorAll(`[data-filter="${type}"]`).forEach(b => b.classList.remove('active'));
