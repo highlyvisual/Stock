@@ -1122,7 +1122,9 @@
     <div class="hero-meta" id="heroMeta">Loading archive…</div>
     <div class="filters">
       <span class="filter-label">Location</span>
-      <div class="filter-group" id="locationFilters"></div>
+      <div class="filter-group" id="locationFilters">
+        <button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>
+      </div>
       <div class="filter-divider"></div>
       <select class="sort-select" id="sortSelect" onchange="applyFilters()">
         <option value="default">Sort: Default</option>
@@ -1158,7 +1160,7 @@
       <a href="https://www.instagram.com/highlyvisualke/" target="_blank">Instagram</a>
       <a href="https://wa.me/254701397911" target="_blank">WhatsApp</a>
     </div>
-    <div class="footer-copy">© 2025 Highly Visual · info@highlyvisual.com · All footage 4K or higher · Licensed drone operator</div>
+    <div class="footer-copy">© 2025 Highly Visual · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7ded9d1d8f7dfded0dfdbcec1dec4c2d6db99d4d8da">[email&#160;protected]</a> · All footage 4K or higher · Licensed drone operator</div>
   </div>
 </footer>
 
@@ -1247,7 +1249,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── STATE ──
 let allFootage  = [];
 let filtered    = [];
@@ -1615,16 +1617,4 @@ function escHtml(str) {
 }
 
 // ── KEYBOARD ──
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeVideoModal();
-    closeEnquiry();
-    document.getElementById('lightboxPanel').classList.remove('open');
-  }
-});
-
-// ── INIT ──
-loadData();
-</script>
-</body>
-</html>
+document.addEventListener('key
