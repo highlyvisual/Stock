@@ -38,31 +38,36 @@
   }
 
   /* &#9472;&#9472; HEADER &#9472;&#9472; */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-  }
-
-  .header-inner {
-    max-width: 1400px;
-    margin: 0 auto;
+  .hero-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 2rem;
-    height: 80px;
+    margin-bottom: 0;
   }
 
-  .logo {
+  .hero-left {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
+    gap: 1.5rem;
+  }
+
+  .hero-logo {
+    height: var(--logo-h, 80px);
+    width: auto;
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));
     flex-shrink: 0;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-actions {
+    flex-shrink: 0;
+    padding-top: 4px;
   }
 
   .header-search {
@@ -165,8 +170,12 @@
   /* &#9472;&#9472; HERO &#9472;&#9472; */
   .hero {
     border-bottom: 1px solid var(--border);
-    padding: 3rem 2rem 2.5rem;
+    padding: 2rem 2rem 1.5rem;
     background: linear-gradient(180deg, #0f0f0a 0%, var(--bg) 100%);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
   }
 
   .hero-inner {
@@ -191,7 +200,7 @@
     letter-spacing: 0.2em;
     color: var(--text-dim);
     text-transform: uppercase;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
   }
 
   /* &#9472;&#9472; FILTERS &#9472;&#9472; */
@@ -1015,8 +1024,7 @@
       padding: 0;
       gap: 1rem;
     }
-    .logo img { height: 40px !important; }
-    .header-search { order: 3; width: 100%; }
+    .logo img { height: 54px !important; }
     .header-actions { margin-left: auto; }
 
     .hero { padding: 1.5rem 1rem 1.25rem; }
@@ -1085,7 +1093,7 @@
     .clip-title { font-size: 0.85rem; }
   }
 
-  .filter-bar { position: sticky; top: 80px; z-index: 90; background: rgba(17,17,17,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .filter-bar { position: sticky; top: 0; z-index: 90; background: rgba(17,17,17,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
   .filter-bar-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
   .fb-row { display: flex; align-items: center; gap: 0.35rem; overflow-x: auto; scrollbar-width: none; min-height: 46px; }
   .fb-row::-webkit-scrollbar { display: none; }
@@ -1093,10 +1101,10 @@
   .fb-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; margin: 0 0.3rem; }
 
   /* showreels */
-  .showreels { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .showreels { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border); border-bottom:1px solid var(--border); height:220px; }
   .reel-card { position:relative; overflow:hidden; cursor:pointer; border-right:1px solid var(--border); }
   .reel-card:last-child { border-right:none; }
-  .reel-thumb { position:relative; padding-bottom:40%; overflow:hidden; background:#000; }
+  .reel-thumb { position:relative; height:100%; overflow:hidden; background:#000; }
   .reel-thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0.6; transition:opacity 0.3s,transform 0.5s; }
   .reel-card:hover .reel-thumb img { opacity:0.85; transform:scale(1.04); }
   .reel-thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 60%); pointer-events:none; }
@@ -1129,17 +1137,13 @@
   .reel-modal-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
 
   /* sticky offset update */
-  .filter-bar { top:80px; }
+
 
   @media (max-width:768px) {
-    .showreels { height:220px; }
-    .header-search { display:none; }
+    .showreels { height:180px; }
+
   }
   @media (max-width:600px) {
-    .showreels { grid-template-columns:1fr; }
-    .reel-thumb { padding-bottom:56.25%; }
-    .reel-card { border-right:none !important; border-bottom:1px solid var(--border); }
-    .reel-card:last-child { border-bottom:none; }
   }
 
   /* two-row filter bar */
@@ -1157,34 +1161,52 @@
     .fb-label { display: none; }
     .fb-row-location { display: flex; }
   }
+
+
+
+  /* hero layout responsive */
+  :root { --logo-h: 90px; }
+
+  @media (max-width: 1100px) {
+    :root { --logo-h: 75px; }
+    .filter-bar { top: 0 !important; }
+  }
+
+  @media (max-width: 768px) {
+    :root { --logo-h: 56px; }
+    .hero { padding: 1.25rem 1rem 1rem; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero-meta { font-size: 0.6rem; }
+    .hero-left { gap: 0.75rem; }
+    .hero-actions { padding-top: 2px; }
+    .filter-bar { top: 0 !important; }
+  }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <div class="logo">
-      <img src="highly visual white.png" alt="Highly Visual" style="height:52px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));">
-    </div>
-    <div class="header-actions">
-      <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-        </svg>
-        LIGHTBOX
-        <span class="lightbox-count" id="lightboxCount" style="display:none">0</span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- HERO / FILTERS -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <h1>STOCK <span>FOOTAGE</span> ARCHIVE</h1>
-    <div class="hero-meta" id="heroMeta">Loading archive&#8230;</div>
-
+    <div class="hero-top">
+      <div class="hero-left">
+        <img class="hero-logo" src="highly visual white.png" alt="Highly Visual" referrerpolicy="no-referrer">
+        <div class="hero-text">
+          <h1>STOCK <span>FOOTAGE</span> ARCHIVE</h1>
+          <div class="hero-meta" id="heroMeta">Loading archive&#8230;</div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+          LIGHTBOX
+          <span class="lightbox-count" id="lightboxCount" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
