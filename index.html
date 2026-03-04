@@ -40,7 +40,7 @@
   /* &#9472;&#9472; HEADER &#9472;&#9472; */
   .hero-top {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 2rem;
     margin-bottom: 0;
@@ -170,7 +170,7 @@
   /* &#9472;&#9472; HERO &#9472;&#9472; */
   .hero {
     border-bottom: 1px solid var(--border);
-    padding: 2rem 2rem 1.5rem;
+    padding: 0.75rem 2rem;
     background: linear-gradient(180deg, #0f0f0a 0%, var(--bg) 100%);
     position: sticky;
     top: 0;
@@ -1165,20 +1165,48 @@
 
 
   /* hero layout responsive */
-  :root { --logo-h: 90px; }
+  :root { --logo-h: 160px; }
 
-  @media (max-width: 1100px) {
-    :root { --logo-h: 75px; }
+  @media (max-width: 1100px) and (min-width: 769px) {
+    :root { --logo-h: 120px; }
     .filter-bar { top: 0 !important; }
   }
 
   @media (max-width: 768px) {
-    :root { --logo-h: 56px; }
+    /* hero: stacked layout — logo centred above title */
     .hero { padding: 1.25rem 1rem 1rem; }
-    .hero h1 { font-size: 1.6rem; }
-    .hero-meta { font-size: 0.6rem; }
-    .hero-left { gap: 0.75rem; }
-    .hero-actions { padding-top: 2px; }
+    .hero-top {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+      position: relative;
+    }
+    .hero-left {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hero-logo {
+      height: 80px !important;
+      display: block;
+    }
+    .hero-text {
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 8vw, 2.4rem);
+      text-align: center;
+    }
+    .hero-meta {
+      text-align: center;
+      font-size: 0.6rem;
+    }
+    .hero-actions {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-top: 0;
+    }
     .filter-bar { top: 0 !important; }
   }
 </style>
