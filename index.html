@@ -1209,6 +1209,137 @@
     }
     .filter-bar { top: 0 !important; }
   }
+
+  /* ── PRICING NOTE (filter bar area) ── */
+  .pricing-note {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.6rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-note-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+  }
+  .pricing-note-text strong {
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+  .pricing-note-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid rgba(200,169,110,0.3);
+    border-radius: 2px;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .pricing-note-link:hover { border-color: var(--accent); background: rgba(200,169,110,0.08); }
+
+  /* ── PRICING PANEL (in lightbox) ── */
+  .pricing-section {
+    border-top: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+  }
+  .pricing-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 0;
+  }
+  .pricing-section-header h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+  }
+  .pricing-toggle-icon {
+    color: var(--text-faint);
+    font-size: 0.75rem;
+    transition: transform 0.25s;
+  }
+  .pricing-section.open .pricing-toggle-icon { transform: rotate(180deg); }
+  .pricing-body {
+    display: none;
+    margin-top: 1rem;
+  }
+  .pricing-section.open .pricing-body { display: block; }
+
+  .pricing-tier {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .pricing-tier:last-child { border-bottom: none; }
+  .pricing-tier-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+  .pricing-tier-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .pricing-tier-rate {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .pricing-tier-desc {
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    line-height: 1.5;
+  }
+  .pricing-tier-sub {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .pricing-tier-sub-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    padding: 0.15rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .pricing-tier-sub-row span:last-child { color: var(--text-dim); }
+  .pricing-footer-note {
+    margin-top: 0.85rem;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-note { padding: 0.5rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+    .pricing-note-text { font-size: 0.55rem; }
+  }
 </style>
 </head>
 <body>
@@ -1277,6 +1408,13 @@
         <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type&#8230;" autocomplete="off">
       </div>
       <button class="search-btn" onclick="executeSearch()">SEARCH</button>
+    </div>
+    <div class="pricing-note">
+      <span class="pricing-note-text">
+        <strong>Licensing</strong> &nbsp;&#183;&nbsp; Non-exclusive from <strong>$450/clip</strong> &nbsp;&#183;&nbsp;
+        Exclusive rights available &nbsp;&#183;&nbsp; Discounts for African productions &amp; NGOs
+      </span>
+      <button class="pricing-note-link" onclick="openPricing()">RATES &amp; TERMS &#8595;</button>
     </div>
     <div class="fb-row fb-row-subject">
       <span class="fb-label">Subject</span>
@@ -1367,6 +1505,81 @@
         <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
       </svg>
       <p>Add clips to your lightbox to send an enquiry</p>
+    </div>
+  </div>
+  <div class="pricing-section" id="pricingSection">
+    <div class="pricing-section-header" onclick="togglePricing()">
+      <h3>RATES &amp; LICENSING</h3>
+      <span class="pricing-toggle-icon">&#9660;</span>
+    </div>
+    <div class="pricing-body">
+
+      <div class="pricing-tier">
+        <div class="pricing-tier-header">
+          <span class="pricing-tier-name">Non-Exclusive</span>
+          <span class="pricing-tier-rate">$450 / clip</span>
+        </div>
+        <div class="pricing-tier-desc">
+          Royalty-free, worldwide, perpetual. Clip remains in the archive and
+          may be licensed to others. Suitable for broadcast, commercial and online use.
+        </div>
+      </div>
+
+      <div class="pricing-tier">
+        <div class="pricing-tier-header">
+          <span class="pricing-tier-name">Exclusive Rights</span>
+          <span class="pricing-tier-rate">from $100 / sec</span>
+        </div>
+        <div class="pricing-tier-desc">
+          Clip withdrawn from the archive for the licence period. Minimum 10 seconds.
+          Premium rate applies to exceptional or rare shots.
+        </div>
+        <div class="pricing-tier-sub">
+          <div class="pricing-tier-sub-row"><span>1 Year</span><span>$100 / sec</span></div>
+          <div class="pricing-tier-sub-row"><span>2 Years</span><span>$175 / sec</span></div>
+          <div class="pricing-tier-sub-row"><span>5 Years</span><span>$250 / sec</span></div>
+        </div>
+      </div>
+
+      <div class="pricing-tier">
+        <div class="pricing-tier-header">
+          <span class="pricing-tier-name">Volume &mdash; 5+ Clips</span>
+          <span class="pricing-tier-rate">$375 / clip</span>
+        </div>
+        <div class="pricing-tier-desc">
+          Non-exclusive. Same licence terms as standard rate.
+          10+ clips at $325/clip. Contact us for larger orders.
+        </div>
+      </div>
+
+      <div class="pricing-tier">
+        <div class="pricing-tier-header">
+          <span class="pricing-tier-name">African Productions</span>
+          <span class="pricing-tier-rate">$250 / clip</span>
+        </div>
+        <div class="pricing-tier-desc">
+          Discounted non-exclusive rate for productions based in and primarily
+          distributed within Africa. Please mention this when enquiring.
+        </div>
+      </div>
+
+      <div class="pricing-tier">
+        <div class="pricing-tier-header">
+          <span class="pricing-tier-name">Students &amp; NGOs</span>
+          <span class="pricing-tier-rate">$150 / clip</span>
+        </div>
+        <div class="pricing-tier-desc">
+          Non-exclusive, non-commercial use. For student films, academic projects
+          and registered conservation or environmental NGOs. Credit required.
+          Pro-bono considered for conservation work &mdash; please ask.
+        </div>
+      </div>
+
+      <p class="pricing-footer-note">
+        All footage supplied as original camera files in the source format and resolution.
+        Log-graded source files included. Rates are in USD; invoicing available in GBP or KES.
+        Add clips to your lightbox and send an enquiry &mdash; we&#8217;ll confirm availability and issue a licence agreement.
+      </p>
     </div>
   </div>
   <div class="lightbox-footer">
@@ -1842,6 +2055,20 @@ function closeReel() {
 }
 
 loadData();
+
+  function openPricing() {
+    // Open lightbox panel and expand pricing section
+    const panel = document.getElementById('lightboxPanel');
+    const pricing = document.getElementById('pricingSection');
+    panel.classList.add('open');
+    pricing.classList.add('open');
+    pricing.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function togglePricing() {
+    document.getElementById('pricingSection').classList.toggle('open');
+  }
+
 </script>
 
 <!-- REEL MODAL -->
