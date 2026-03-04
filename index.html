@@ -1092,6 +1092,55 @@
   .fb-row::-webkit-scrollbar { display: none; }
   .fb-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); white-space: nowrap; flex-shrink: 0; }
   .fb-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; margin: 0 0.3rem; }
+
+  /* showreels */
+  .showreels { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border); border-bottom:1px solid var(--border); max-height:300px; overflow:hidden; }
+  .reel-card { position:relative; overflow:hidden; cursor:pointer; border-right:1px solid var(--border); }
+  .reel-card:last-child { border-right:none; }
+  .reel-thumb { position:relative; aspect-ratio:16/9; overflow:hidden; background:#000; }
+  .reel-thumb img { width:100%; height:100%; object-fit:cover; display:block; opacity:0.6; transition:opacity 0.3s,transform 0.5s; }
+  .reel-card:hover .reel-thumb img { opacity:0.85; transform:scale(1.04); }
+  .reel-thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 60%); pointer-events:none; }
+  .reel-overlay { position:absolute; bottom:0; left:0; right:0; padding:12px 16px; display:flex; align-items:flex-end; justify-content:space-between; z-index:2; }
+  .reel-label { display:flex; flex-direction:column; gap:2px; }
+  .reel-eyebrow { font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(200,169,110,0.8); }
+  .reel-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(14px,1.8vw,22px); letter-spacing:0.06em; color:#fff; line-height:1; }
+  .reel-dur { font-family:'DM Mono',monospace; font-size:0.55rem; color:rgba(255,255,255,0.4); margin-top:2px; }
+  .reel-play { width:36px; height:36px; border:1.5px solid rgba(255,255,255,0.5); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0; transition:all 0.2s; }
+  .reel-card:hover .reel-play { border-color:var(--accent); background:rgba(200,169,110,0.25); }
+
+  /* search row in filter bar */
+  .fb-search-row { display:flex; align-items:center; gap:0.6rem; padding:0.6rem 0; border-bottom:1px solid var(--border); }
+  .fb-search-inner { position:relative; flex:1; }
+  .fb-search-inner input { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:3px; padding:0.5rem 1rem 0.5rem 2.4rem; color:var(--text); font-family:'DM Sans',sans-serif; font-size:0.875rem; font-weight:300; outline:none; transition:border-color 0.2s; }
+  .fb-search-inner input:focus { border-color:var(--accent); }
+  .fb-search-inner input::placeholder { color:var(--text-faint); }
+  .fb-search-inner .search-icon { position:absolute; left:0.7rem; top:50%; transform:translateY(-50%); color:var(--text-faint); pointer-events:none; }
+
+  /* reel modal */
+  .reel-modal { position:fixed; inset:0; background:rgba(0,0,0,0.94); z-index:1100; display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity 0.25s; }
+  .reel-modal.active { opacity:1; pointer-events:all; }
+  .reel-modal-inner { width:100%; max-width:900px; }
+  .reel-modal-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:12px; gap:1rem; }
+  .reel-modal-title { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.08em; color:var(--text); }
+  .reel-modal-sub { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:var(--text-faint); text-transform:uppercase; margin-top:3px; }
+  .reel-modal-close { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#fff; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .reel-modal-close:hover { background:rgba(255,255,255,0.2); }
+  .reel-modal-frame { position:relative; aspect-ratio:16/9; background:#000; border-radius:3px; overflow:hidden; }
+  .reel-modal-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+
+  /* sticky offset update */
+  .filter-bar { top:170px; }
+
+  @media (max-width:768px) {
+    .showreels { max-height:none; grid-template-columns:1fr 1fr; }
+    .header-search { display:none; }
+  }
+  @media (max-width:420px) {
+    .showreels { grid-template-columns:1fr; }
+    .reel-card { border-right:none !important; border-bottom:1px solid var(--border); }
+    .reel-card:last-child { border-bottom:none; }
+  }
 </style>
 </head>
 <body>
@@ -1101,15 +1150,6 @@
   <div class="header-inner">
     <div class="logo">
       <img src="highly visual white.png" alt="Highly Visual" style="height:160px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));">
-    </div>
-    <div class="header-search">
-      <div class="header-search-inner">
-        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type&#8230;" autocomplete="off">
-      </div>
-      <button class="search-btn" onclick="executeSearch()">SEARCH</button>
     </div>
     <div class="header-actions">
       <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
@@ -1132,9 +1172,46 @@
   </div>
 </div>
 
+<!-- SHOWREELS -->
+<div class="showreels">
+  <div class="reel-card" onclick="openReel('1012359827','Aerial Archive Teaser','1:07','Drone &amp; Aerial')">
+    <div class="reel-thumb">
+      <img src="https://i.vimeocdn.com/video/1930112798-15ce7a70c6d17045c0a70043c68712b0f396877fefb4275f8ee3cdfbab74d787-d_1280x720?region=us" alt="Aerial Stock Teaser" loading="lazy" referrerpolicy="no-referrer">
+      <div class="reel-overlay">
+        <div class="reel-label">
+          <div class="reel-eyebrow">Showreel</div>
+          <div class="reel-title">AERIAL ARCHIVE</div>
+          <div class="reel-dur">1:07 &middot; Drone &amp; Aerial</div>
+        </div>
+        <div class="reel-play"><svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="reel-card" onclick="openReel('795492631','Long Lens Wildlife Teaser','1:13','Telephoto &amp; Long Lens')">
+    <div class="reel-thumb">
+      <img src="https://i.vimeocdn.com/video/1602266963-445514cb87ddfb82f39750b77d1323a9accbf78558fc8423ed6cb5fa71131331-d_1280x720?region=us" alt="Long Lens Archive Teaser" loading="lazy" referrerpolicy="no-referrer">
+      <div class="reel-overlay">
+        <div class="reel-label">
+          <div class="reel-eyebrow">Showreel</div>
+          <div class="reel-title">LONG LENS WILDLIFE</div>
+          <div class="reel-dur">1:13 &middot; Telephoto &amp; Long Lens</div>
+        </div>
+        <div class="reel-play"><svg width="12" height="13" viewBox="0 0 12 14" fill="currentColor"><path d="M1 1l10 6-10 6V1z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- FILTER BAR -->
 <div class="filter-bar">
   <div class="filter-bar-inner">
+    <div class="fb-search-row">
+      <div class="fb-search-inner">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search by subject, location, behaviour, shot type&#8230;" autocomplete="off">
+      </div>
+      <button class="search-btn" onclick="executeSearch()">SEARCH</button>
+    </div>
     <div class="fb-row">
       <span class="fb-label">Subject</span>
       <button class="filter-chip active" data-filter="subject" data-value="all" onclick="setSubject('all',this)">All</button>
@@ -1682,7 +1759,36 @@ document.addEventListener('keydown', function(e) {
 });
 
 // &#9472;&#9472; INIT &#9472;&#9472;
+
+function openReel(id, title, dur, type) {
+  document.getElementById('reelModalTitle').textContent = title;
+  document.getElementById('reelModalSub').textContent = 'Showreel · ' + dur + ' · ' + type;
+  document.getElementById('reelModalFrame').innerHTML =
+    '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+  document.getElementById('reelModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeReel() {
+  document.getElementById('reelModal').classList.remove('active');
+  document.getElementById('reelModalFrame').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
 loadData();
 </script>
+
+<!-- REEL MODAL -->
+<div class="reel-modal" id="reelModal" onclick="if(event.target===this)closeReel()">
+  <div class="reel-modal-inner">
+    <div class="reel-modal-header">
+      <div>
+        <div class="reel-modal-title" id="reelModalTitle"></div>
+        <div class="reel-modal-sub" id="reelModalSub"></div>
+      </div>
+      <button class="reel-modal-close" onclick="closeReel()">&#10005;</button>
+    </div>
+    <div class="reel-modal-frame" id="reelModalFrame"></div>
+  </div>
+</div>
 </body>
 </html>
