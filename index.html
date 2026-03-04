@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     gap: 2rem;
-    height: 170px;
+    height: 80px;
   }
 
   .logo {
@@ -1011,12 +1011,11 @@
   /* &#9472;&#9472; RESPONSIVE &#9472;&#9472; */
   @media (max-width: 768px) {
     .header-inner {
-      flex-wrap: wrap;
-      height: auto;
-      padding: 0.75rem 0;
-      gap: 0.75rem;
+      height: 60px;
+      padding: 0;
+      gap: 1rem;
     }
-    .logo img { height: 60px; }
+    .logo img { height: 40px !important; }
     .header-search { order: 3; width: 100%; }
     .header-actions { margin-left: auto; }
 
@@ -1086,7 +1085,7 @@
     .clip-title { font-size: 0.85rem; }
   }
 
-  .filter-bar { position: sticky; top: 170px; z-index: 90; background: rgba(17,17,17,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .filter-bar { position: sticky; top: 80px; z-index: 90; background: rgba(17,17,17,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
   .filter-bar-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
   .fb-row { display: flex; align-items: center; gap: 0.35rem; overflow-x: auto; scrollbar-width: none; min-height: 46px; }
   .fb-row::-webkit-scrollbar { display: none; }
@@ -1094,11 +1093,11 @@
   .fb-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; margin: 0 0.3rem; }
 
   /* showreels */
-  .showreels { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border); border-bottom:1px solid var(--border); height:200px; }
+  .showreels { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
   .reel-card { position:relative; overflow:hidden; cursor:pointer; border-right:1px solid var(--border); }
   .reel-card:last-child { border-right:none; }
-  .reel-thumb { position:relative; height:100%; overflow:hidden; background:#000; }
-  .reel-thumb img { width:100%; height:100%; object-fit:cover; display:block; opacity:0.6; transition:opacity 0.3s,transform 0.5s; }
+  .reel-thumb { position:relative; padding-bottom:40%; overflow:hidden; background:#000; }
+  .reel-thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0.6; transition:opacity 0.3s,transform 0.5s; }
   .reel-card:hover .reel-thumb img { opacity:0.85; transform:scale(1.04); }
   .reel-thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 60%); pointer-events:none; }
   .reel-overlay { position:absolute; bottom:0; left:0; right:0; padding:12px 16px; display:flex; align-items:flex-end; justify-content:space-between; z-index:2; }
@@ -1130,19 +1129,33 @@
   .reel-modal-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
 
   /* sticky offset update */
-  .filter-bar { top:170px; }
+  .filter-bar { top:80px; }
 
   @media (max-width:768px) {
-    .showreels { height:auto; }
+    .showreels { height:220px; }
     .header-search { display:none; }
   }
-  @media (max-width:768px) {
-    .showreels { height:160px; }
-  }
-  @media (max-width:420px) {
+  @media (max-width:600px) {
     .showreels { grid-template-columns:1fr; }
+    .reel-thumb { padding-bottom:56.25%; }
     .reel-card { border-right:none !important; border-bottom:1px solid var(--border); }
     .reel-card:last-child { border-bottom:none; }
+  }
+
+  /* two-row filter bar */
+  .fb-row { border-bottom: 1px solid var(--border); }
+  .fb-row:last-child { border-bottom: none; }
+  .fb-row-location { overflow-x: auto; scrollbar-width: none; }
+  .fb-row-location::-webkit-scrollbar { display: none; }
+
+  /* mobile filter bar: both rows visible, each scrollable */
+  @media (max-width: 768px) {
+    .filter-bar { top: 60px; }
+    .fb-search-row { padding: 0.5rem 0; }
+    .filter-bar-inner { padding: 0 1rem; }
+    .fb-row { min-height: 40px; gap: 0.3rem; }
+    .fb-label { display: none; }
+    .fb-row-location { display: flex; }
   }
 </style>
 </head>
@@ -1152,7 +1165,7 @@
 <header>
   <div class="header-inner">
     <div class="logo">
-      <img src="highly visual white.png" alt="Highly Visual" style="height:160px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));">
+      <img src="highly visual white.png" alt="Highly Visual" style="height:52px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3));">
     </div>
     <div class="header-actions">
       <button class="lightbox-btn" id="lightboxToggle" onclick="toggleLightbox()">
@@ -1215,7 +1228,7 @@
       </div>
       <button class="search-btn" onclick="executeSearch()">SEARCH</button>
     </div>
-    <div class="fb-row">
+    <div class="fb-row fb-row-subject">
       <span class="fb-label">Subject</span>
       <button class="filter-chip active" data-filter="subject" data-value="all" onclick="setSubject('all',this)">All</button>
       <button class="filter-chip" data-filter="subject" data-value="wildlife" onclick="setSubject('wildlife',this)">Wildlife</button>
@@ -1223,7 +1236,8 @@
       <button class="filter-chip" data-filter="subject" data-value="longlens" onclick="setSubject('longlens',this)">Long Lens</button>
       <button class="filter-chip" data-filter="subject" data-value="landscape" onclick="setSubject('landscape',this)">Landscape</button>
       <button class="filter-chip" data-filter="subject" data-value="coast" onclick="setSubject('coast',this)">Coast &amp; Marine</button>
-      <div class="fb-divider"></div>
+    </div>
+    <div class="fb-row fb-row-location">
       <span class="fb-label">Location</span>
       <div id="locationFilters" style="display:flex;gap:0.3rem;flex-wrap:nowrap;">
         <button class="filter-chip active" data-filter="location" data-value="all" onclick="setFilter('location','all',this)">All</button>
