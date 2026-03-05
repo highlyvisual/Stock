@@ -1906,7 +1906,7 @@ function openClip(id) {
 
   const videoEl = document.getElementById('modalVideo');
   if (clip.vimeo_id) {
-    videoEl.innerHTML = `<iframe src="https://player.vimeo.com/video/${clip.vimeo_id}?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    videoEl.innerHTML = `<iframe src="https://player.vimeo.com/video/${clip.vimeo_id}?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0&pip=0&share=0&like=0&watchlater=0&collections=0&speed=0&transparent=0&dnt=1" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
   } else {
     videoEl.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-faint);font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;">NO VIMEO ID</div>`;
   }
@@ -2057,7 +2057,7 @@ function openReel(id, title, dur, type) {
   document.getElementById('reelModalTitle').textContent = title;
   document.getElementById('reelModalSub').textContent = 'Showreel · ' + dur + ' · ' + type;
   document.getElementById('reelModalFrame').innerHTML =
-    '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0&pip=0&share=0&like=0&watchlater=0&collections=0&speed=0&transparent=0&dnt=1" allow="autoplay; fullscreen" allowfullscreen></iframe>';
   document.getElementById('reelModal').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
