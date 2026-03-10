@@ -678,6 +678,15 @@
     overflow: hidden;
   }
 
+    .lightbox-item-filename {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+    opacity: 0.7;
+  }
+
   .lightbox-item-meta {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
@@ -1173,7 +1182,7 @@
   }
 
   @media (max-width: 768px) {
-    /* hero: stacked layout — logo centred above title */
+    /* hero: stacked layout â logo centred above title */
     .hero { padding: 1.25rem 1rem 1rem; }
     .hero-top {
       flex-direction: column;
@@ -1210,7 +1219,7 @@
     .filter-bar { top: 0 !important; }
   }
 
-  /* ── PRICING NOTE (filter bar area) ── */
+  /* ââ PRICING NOTE (filter bar area) ââ */
   .pricing-note {
     max-width: 1400px;
     margin: 0 auto;
@@ -1249,7 +1258,7 @@
   }
   .pricing-note-link:hover { border-color: var(--accent); background: rgba(200,169,110,0.08); }
 
-  /* ── PRICING PANEL (in lightbox) ── */
+  /* ââ PRICING PANEL (in lightbox) ââ */
   .pricing-section {
     border-top: 1px solid var(--border);
     flex-shrink: 0;
@@ -1714,7 +1723,7 @@ async function loadData() {
 function init() {
   buildLocationFilters();
   document.getElementById('heroMeta').textContent =
-    `${allFootage.length.toLocaleString()} clips · East Africa · 4K & higher`;
+    `${allFootage.length.toLocaleString()} clips Â· East Africa Â· 4K & higher`;
 
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', e => {
@@ -1974,6 +1983,7 @@ function updateLightboxUI() {
         <div class="lightbox-item-num">${String(i+1).padStart(2,'0')}</div>
         <div class="lightbox-item-info">
           <div class="lightbox-item-title">${escHtml(clip.title)}</div>
+          <div class="lightbox-item-filename">${escHtml(clip.filename)}</div>
           <div class="lightbox-item-meta">${escHtml(clip.location)}${clip.duration ? ' &#183; ' + clip.duration : ''}</div>
         </div>
         <button class="remove-item" onclick="toggleLightboxItem(getClip(${clip.id}))" title="Remove">&#10005;</button>
@@ -2055,7 +2065,7 @@ document.addEventListener('keydown', function(e) {
 
 function openReel(id, title, dur, type) {
   document.getElementById('reelModalTitle').textContent = title;
-  document.getElementById('reelModalSub').textContent = 'Showreel · ' + dur + ' · ' + type;
+  document.getElementById('reelModalSub').textContent = 'Showreel Â· ' + dur + ' Â· ' + type;
   document.getElementById('reelModalFrame').innerHTML =
     '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0&pip=0&share=0&like=0&watchlater=0&collections=0&speed=0&transparent=0&dnt=1" allow="autoplay; fullscreen" allowfullscreen></iframe>';
   document.getElementById('reelModal').classList.add('active');
