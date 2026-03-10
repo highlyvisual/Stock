@@ -687,6 +687,39 @@
     opacity: 0.7;
   }
 
+  .lightbox-item-filename {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+    opacity: 0.7;
+  }
+
+  .modal-filename { margin-top: 0.75rem; }
+
+  .meta-pill.filename {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .enquiry-clip-item p { margin: 0 0 2px 0; }
+  .clip-filename-ref {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
   .lightbox-item-meta {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
@@ -1182,7 +1215,7 @@
   }
 
   @media (max-width: 768px) {
-    /* hero: stacked layout â logo centred above title */
+    /* hero: stacked layout Ã¢ÂÂ logo centred above title */
     .hero { padding: 1.25rem 1rem 1rem; }
     .hero-top {
       flex-direction: column;
@@ -1219,7 +1252,7 @@
     .filter-bar { top: 0 !important; }
   }
 
-  /* ââ PRICING NOTE (filter bar area) ââ */
+  /* Ã¢ÂÂÃ¢ÂÂ PRICING NOTE (filter bar area) Ã¢ÂÂÃ¢ÂÂ */
   .pricing-note {
     max-width: 1400px;
     margin: 0 auto;
@@ -1258,7 +1291,7 @@
   }
   .pricing-note-link:hover { border-color: var(--accent); background: rgba(200,169,110,0.08); }
 
-  /* ââ PRICING PANEL (in lightbox) ââ */
+  /* Ã¢ÂÂÃ¢ÂÂ PRICING PANEL (in lightbox) Ã¢ÂÂÃ¢ÂÂ */
   .pricing-section {
     border-top: 1px solid var(--border);
     flex-shrink: 0;
@@ -1505,6 +1538,7 @@
       <div class="clip-meta-row" id="modalMeta"></div>
       <div class="modal-title" id="modalTitle"></div>
       <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-filename" id="modalFilename"></div>
       <div class="modal-footer">
         <div class="clip-tags" id="modalTags"></div>
         <button class="add-to-lightbox" id="modalLightboxBtn" onclick="toggleLightboxItem(currentClip)">+ Add to Lightbox</button>
@@ -1723,7 +1757,7 @@ async function loadData() {
 function init() {
   buildLocationFilters();
   document.getElementById('heroMeta').textContent =
-    `${allFootage.length.toLocaleString()} clips Â· East Africa Â· 4K & higher`;
+    `${allFootage.length.toLocaleString()} clips ÃÂ· East Africa ÃÂ· 4K & higher`;
 
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', e => {
@@ -1903,6 +1937,7 @@ function openClip(id) {
 
   document.getElementById('modalTitle').textContent = clip.title;
   document.getElementById('modalDesc').textContent  = clip.description;
+  document.getElementById('modalFilename').innerHTML = clip.filename ? `<span class="meta-pill filename">${escHtml(clip.filename)}</span>` : '';
 
   document.getElementById('modalMeta').innerHTML = `
     ${clip.location && clip.location !== 'Unknown' ? `<span class="meta-pill location">${escHtml(clip.location)}</span>` : ''}
@@ -2001,7 +2036,7 @@ function clearLightbox() {
 function openEnquiry() {
   const clipsText = lightbox.map((c,i) => `${i+1}. ${c.title} (${c.filename}${c.vimeo_id ? ' &#183; vimeo.com/'+c.vimeo_id : ''})`).join('\n');
   document.getElementById('enquiryClipList').innerHTML =
-    lightbox.map(c => `<p>${escHtml(c.title)}</p>`).join('');
+    lightbox.map(c => `<div class="enquiry-clip-item"><p>${escHtml(c.title)}</p><span class="clip-filename-ref">${escHtml(c.filename)}</span></div>`).join('');
   document.getElementById('selectedClipsInput').value = clipsText;
   document.getElementById('enquiryModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -2065,7 +2100,7 @@ document.addEventListener('keydown', function(e) {
 
 function openReel(id, title, dur, type) {
   document.getElementById('reelModalTitle').textContent = title;
-  document.getElementById('reelModalSub').textContent = 'Showreel Â· ' + dur + ' Â· ' + type;
+  document.getElementById('reelModalSub').textContent = 'Showreel ÃÂ· ' + dur + ' ÃÂ· ' + type;
   document.getElementById('reelModalFrame').innerHTML =
     '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0&pip=0&share=0&like=0&watchlater=0&collections=0&speed=0&transparent=0&dnt=1" allow="autoplay; fullscreen" allowfullscreen></iframe>';
   document.getElementById('reelModal').classList.add('active');
